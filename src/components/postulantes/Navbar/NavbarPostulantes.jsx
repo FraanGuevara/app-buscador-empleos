@@ -8,15 +8,12 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css';
-import { Stack } from '@mui/material';
+import styles from './NavbarPostulantes.module.css';
 
 
 
-const pages = ['classic', 'car-and-motocycle', 'NBA', 'patches', 'trucker'];
+const pages = ['empleos', 'noticias', 'mi perfil'];
 
 export default function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -34,23 +31,12 @@ export default function ResponsiveAppBar() {
     return (
         <>
             <div style={{ backgroundColor: 'black', overflow: 'hidden', textOverflow: 'clip' }}>
-                <div id={styles.textoNavbar} style={{ backgroundColor: 'black', color: 'white', height: '35px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    3 AND 6 FREE INTEREST QUOTES 💳 ㅤㅤㅤㅤ|ㅤㅤㅤㅤFREE SHIPPING 🚚
-                </div>
             </div>
             <AppBar id={styles.navbarAllproducts} position="relative" >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-                        >
-                            AuraFlow{/* Logo */}
-                        </Typography>
-                        {/* ----------------------------------------------------------- */}
 
+                        {/* ----------------------------------------------------------- */}
                         <Box sx={{
                             flexGrow: 1, display: { xs: 'flex', md: 'none' }
                         }}>
@@ -84,22 +70,14 @@ export default function ResponsiveAppBar() {
                             >
                                 <div id={styles.menuNavbar}>
 
-                                    {/* Boton HOME */}
-                                    <Link id={styles.botonesLink} to='/Home'>
+                                    {/* Boton HOME MOBILE */}
+                                    <Link id={styles.botonesLink} to='/home-postulantes'>
                                         <Button id={styles.botonesStyle} variant="contained" key='Home' onClick={handleCloseNavMenu}>
                                             Home
                                         </Button>
                                     </Link>
-                                    {/* Boton ALL */}
-                                    <Link id={styles.botonesLink} to='/'>
-                                        <Button id={styles.botonesStyle} variant="contained" key='Home' onClick={handleCloseNavMenu}>
-                                            All products
-                                        </Button>
-                                    </Link>
-                                    {/* Boton Categories */}
-                                    <Button id={styles.botonStyleDisable} variant="contained">Categories</Button>
 
-                                    {/* Botones de las categorias */}
+                                    {/* Botones Empleos / noticias / mi perfil MOBILE */}
                                     {pages.map((page) => (
                                         <Link id={styles.botonesLink} to={'/category/' + page}>
                                             <Button id={styles.botonesStyle} variant="contained" key={page} onClick={handleCloseNavMenu}>
@@ -110,22 +88,31 @@ export default function ResponsiveAppBar() {
                                 </div>
                             </Menu>
                         </Box>
-
-                        {/* ----------------------------------------------------------- */}
+                        {/* LOGO RESPONSIVE MOBILE */}
                         <Typography
                             variant="h6"
                             noWrap
                             component="div"
                             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                         >
-                            AuraFlow{/* Logo Responsive*/}
+                            Rosario Jobs !{/* Logo */}
                         </Typography>
 
-                        {/* ----------------------------------------------------------- */}
+
+                        {/* WEB----------------------------------------------------------- */}
+                        {/* lOGO WEB  */}
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        >
+                            Rosario Jobs !{/* Logo */}
+                        </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            {/* Boton HOME */}
-                            <Link id={styles.botonesLink} to='/Home'>
+                            {/* Boton HOME WEB */}
+                            <Link id={styles.botonesLink} to='/home-postulantes'>
                                 <Button
                                     key='Home'
                                     onClick={handleCloseNavMenu}
@@ -133,21 +120,10 @@ export default function ResponsiveAppBar() {
                                     Home
                                 </Button>
                             </Link>
-
-                            {/* Boton ALL */}
-                            <Link id={styles.botonesLink} to='/'>
-                                <Button
-                                    key='All-products'
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}>
-                                    All products
-                                </Button>
-                            </Link>
-
-                            {/* Botones CATEGORIAS */}
+                            {/* Botones CATEGORIAS WEB*/}
                             {pages.map((page) => (
                                 /* Link para que a cada "page" se le asigne el link de router con su mismo nombre */
-                                <Link id={styles.botonesLink} to={'/category/' + page}>
+                                <Link id={styles.botonesLink} to={'/' + page}>
                                     <Button
                                         key={page}
                                         onClick={handleCloseNavMenu}
@@ -158,7 +134,6 @@ export default function ResponsiveAppBar() {
                                 </Link>
                             ))}
                         </Box>
-                        <CartWidget />
                     </Toolbar>
                 </Container>
             </AppBar>
