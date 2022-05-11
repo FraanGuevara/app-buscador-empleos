@@ -1,9 +1,11 @@
-import React from 'react'
-import '../App.css'
+import {Link as LinkRouter} from "react-router-dom"
+
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import PersonIcon from '@mui/icons-material/Person'
 import HomeIcon from '@mui/icons-material/Home'
+
+import '../App.css'
 
 export default function Home() {
     return (
@@ -20,7 +22,8 @@ export default function Home() {
                 <Typography variant="h4" sx={{
                     display: 'flex',
                     alignItems: 'flex-end',
-                    justifyContent: 'center'}}>
+                    justifyContent: 'center',
+                    fontFamily: 'Radio Canada'}}>
                     gente que busca gente
                 </Typography>
                 <div style={{
@@ -49,28 +52,30 @@ export default function Home() {
                                 trabajar!
                             </Typography> 
                     </Box>
-                    <Box sx={{
-                        display: 'flex',
-                                                flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '40px 20px 0 20px'}}>
-                            <PersonIcon sx={{
-                                color:'rgb(0, 105, 192)',
-                                '&:hover': {color: 'white', bgcolor: 'rgb(255, 154, 62)'},
-                                backgroundColor: 'white',
-                                width: '40px',
-                                height: '40px',
-                                padding: '5px',
-                                borderRadius: '30px'}} />
-                            <Typography variant="h5" className='macondo' sx={{
-                                display:'flex',
-                                alignItems:'flex-end',
-                                justifyContent:'center',
-                                fontFamily: 'Macondo'}}>
-                                ingresar!
-                            </Typography> 
-                    </Box>
+                    <LinkRouter to={'/ingresar'}>
+                        <Box sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '40px 20px 0 20px'}}>
+                                <PersonIcon sx={{
+                                    color:'rgb(0, 105, 192)',
+                                    '&:hover': {color: 'white', bgcolor: 'rgb(255, 154, 62)'},
+                                    backgroundColor: 'white',
+                                    width: '40px',
+                                    height: '40px',
+                                    padding: '5px',
+                                    borderRadius: '30px'}} />
+                                <Typography variant="h5" className='macondo' sx={{
+                                    display:'flex',
+                                    alignItems:'flex-end',
+                                    justifyContent:'center',
+                                    fontFamily: 'Macondo'}}>
+                                    ingresar!
+                                </Typography> 
+                        </Box>
+                    </LinkRouter>
                 </div>
             </div>
         </div>
