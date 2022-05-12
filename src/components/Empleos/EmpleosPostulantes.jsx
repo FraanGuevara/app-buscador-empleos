@@ -1,9 +1,14 @@
 import React from 'react'
+import CardEmpleos from './CardEmpleos'
+import FiltrosEmpleos from './FiltrosEmpleos'
 
 export default function EmpleosPostulantes() {
   return (
     <>
-        <h1 style={{color:'black'}}>EmpleosPostulantes</h1>
+    <div style={{color:'black', height:'100%'}}>
+        <FiltrosEmpleos/>
+        <CardEmpleos/>
+    </div>
     </>
   )
 }

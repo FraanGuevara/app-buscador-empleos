@@ -27,7 +27,7 @@ function App() {
             <Route exact path="/empleos" element={<EmpleosPostulantes />}/>
             <Route exact path="/ingresar" element={<Ingresar />}/>
             <Route exact path="/noticias" element={<NoticiasPostulantes />}/>
-            <Route exact path="/mi-perfil" element={<MiPerfilPostulantes />}/>
+            <Route exact path="/mi%20perfil" element={<MiPerfilPostulantes />}/>
             </Routes>
         </BrowserRouter>
       </>
