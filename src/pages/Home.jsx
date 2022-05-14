@@ -30,28 +30,31 @@ export default function Home() {
                     display:'flex',
                     alignItems:'start',
                     justifyContent: 'center'}}>
-                    <Box sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '40px 20px 0 20px'}}>
-                            <HomeIcon sx={{
-                                color:'rgb(0, 105, 192)',
-                                '&:hover': {color: 'white', bgcolor: 'rgb(255, 154, 62)'},
-                                backgroundColor: 'white',
-                                width: '40px',
-                                height: '40px',
-                                padding: '5px',
-                                borderRadius: '30px'}} />
-                            <Typography variant="h5" className='macondo' sx={{
-                                display:'flex',
-                                alignItems:'flex-end',
-                                justifyContent:'center',
-                                fontFamily: 'Macondo'}}>
-                                trabajar!
-                            </Typography> 
-                    </Box>
+                    <LinkRouter to={'/empleos'}>
+                        <Box sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '40px 20px 0 20px'}}>
+                                <HomeIcon sx={{
+                                    color:'rgb(0, 105, 192)',
+                                    '&:hover': {color: 'white', bgcolor: 'rgb(255, 154, 62)'},
+                                    backgroundColor: 'white',
+                                    width: '40px',
+                                    height: '40px',
+                                    padding: '5px',
+                                    borderRadius: '30px'}} />
+                                <Typography variant="h5" className='macondo' sx={{
+                                    color: 'white',
+                                    display:'flex',
+                                    alignItems:'flex-end',
+                                    justifyContent:'center',
+                                    fontFamily: 'Macondo'}}>
+                                    trabajar!
+                                </Typography> 
+                        </Box>
+                    </LinkRouter>
                     <LinkRouter to={'/ingresar'}>
                         <Box sx={{
                             display: 'flex',
@@ -68,6 +71,7 @@ export default function Home() {
                                     padding: '5px',
                                     borderRadius: '30px'}} />
                                 <Typography variant="h5" className='macondo' sx={{
+                                    color: 'white',
                                     display:'flex',
                                     alignItems:'flex-end',
                                     justifyContent:'center',

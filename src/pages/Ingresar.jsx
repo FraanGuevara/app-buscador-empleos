@@ -20,6 +20,7 @@ export default function Ingresar(props) {
     const mainApi = "http://localhost:4000/api/"
     
     const handleRegister = (event) => {
+        event.preventDefault()
         setRegister(!register)
     }
 
@@ -101,6 +102,68 @@ export default function Ingresar(props) {
                             minWidth: '280px',
                             backgroundColor: 'rgb(0, 105, 192)',
                             border: '5px solid rgb(0, 105, 192)',
+                            borderRadius: '50px',
+                            marginTop: '5px'}}>
+                            <label htmlFor="email">
+                                <MailIcon sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: '40px',
+                                    height: '40px',
+                                    color: 'white',
+                                    backgroundColor: 'rgb(0, 105, 192)',
+                                    border: '0 solid rgb(0, 105, 192)',
+                                    borderRadius: '50px 0 0 50px',
+                                    padding: '10px'}}/>
+                            </label>
+                            <input type='email' name='email' id='email' placeholder='e-mail' className='myInput' ref={mail} required />
+                        </Box>
+                        <Box sx={{
+                            display: 'flex',
+                            width: '60%',
+                            minWidth: '280px',
+                            backgroundColor: 'rgb(0, 105, 192)',
+                            border: '5px solid rgb(0, 105, 192)',
+                            borderRadius: '50px',
+                            marginTop: '5px'}}>
+                            <label htmlFor="password">
+                                <KeyIcon sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: '40px',
+                                    height: '40px',
+                                    color: 'white',
+                                    backgroundColor: 'rgb(0, 105, 192)',
+                                    border: '0 solid rgb(0, 105, 192)',
+                                    borderRadius: '50px 0 0 50px',
+                                    padding: '10px'}}/>
+                            </label>
+                            <input type='password' name='password' id='password' placeholder='contraseña' className='myInput' ref={pass} required />
+                        </Box>
+                        <Box sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            width: '60%',
+                            minWidth: '280px',
+                            height: '50px',
+                            borderRadius: '50px',
+                            marginTop: '20px'}}>
+                            <input type="submit" value='registrar!' className='myButton' required />
+                            <div className='myButtonDiv' onClick={handleRegister}>ingresar</div>
+                        </Box>
+                    </form>
+
+                ) : (
+                    <form onSubmit={handleSignin} className='w100'>
+                        <Box sx={{
+                            display: 'flex',
+                            width: '60%',
+                            minWidth: '280px',
+                            backgroundColor: 'rgb(0, 105, 192)',
+                            border: '5px solid rgb(0, 105, 192)',
                             borderRadius: '50px'}}>
                             <label htmlFor="email">
                                 <MailIcon sx={{
@@ -149,69 +212,8 @@ export default function Ingresar(props) {
                             height: '50px',
                             borderRadius: '50px',
                             marginTop: '20px'}}>
-                            <input type="submit" value='ingreso' className='myButton' required />
-                            <div className='myButtonDiv'>registro</div>
-                        </Box>
-                    </form>
-
-                ) : (
-                    <form onSubmit={handleSignin} className='w100'>
-                        <Box sx={{
-                            display: 'flex',
-                            width: '60%',
-                            minWidth: '280px',
-                            backgroundColor: 'rgb(0, 105, 192)',
-                            border: '5px solid rgb(0, 105, 192)',
-                            borderRadius: '50px'}}>
-                            <label htmlFor="email">
-                                <MailIcon sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: '40px',
-                                    height: '40px',
-                                    color: 'white',
-                                    backgroundColor: 'rgb(0, 105, 192)',
-                                    border: '0 solid rgb(0, 105, 192)',
-                                    borderRadius: '50px 0 0 50px',
-                                    padding: '10px'}}/>
-                            </label>
-                            <input type='email' name='email' id='email' placeholder='e-mail' className='myInput' value={mail} ref={mail} required />
-                        </Box>
-                        <Box sx={{
-                            display: 'flex',
-                            width: '60%',
-                            minWidth: '280px',
-                            backgroundColor: 'rgb(0, 105, 192)',
-                            border: '5px solid rgb(0, 105, 192)',
-                            borderRadius: '50px',
-                            marginTop: '5px'}}>
-                            <label htmlFor="password">
-                                <KeyIcon sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: '40px',
-                                    height: '40px',
-                                    color: 'white',
-                                    backgroundColor: 'rgb(0, 105, 192)',
-                                    border: '0 solid rgb(0, 105, 192)',
-                                    borderRadius: '50px 0 0 50px',
-                                    padding: '10px'}}/>
-                            </label>
-                            <input type='password' name='password' id='password' placeholder='contraseña' className='myInput' value={pass} ref={pass} required />
-                        </Box>
-                        <Box sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            width: '60%',
-                            minWidth: '280px',
-                            height: '50px',
-                            borderRadius: '50px',
-                            marginTop: '20px'}}>
-                            <input type="submit" value='ingreso' className='myButton' required />
-                            <div className='myButtonDiv'>registro</div>
+                            <input type="submit" value='ingresar!' className='myButton' required />
+                            <div className='myButtonDiv' onClick={handleRegister}>registrar</div>
                         </Box>
                     </form>
                 )}
