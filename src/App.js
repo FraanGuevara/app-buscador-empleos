@@ -1,31 +1,36 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./components/Home";
-import EmpleosPostulantes from "./components/postulantes/Empleos/EmpleosPostulantes";
-import HomePostulantes from "./components/postulantes/HomePostulantes";
-import MiPerfilPostulantes from "./components/postulantes/MiPerfil/MiPerfilPostulantes";
-import NavbarPostulantes from './components/postulantes/Navbar/NavbarPostulantes'
-import NoticiasPostulantes from "./components/postulantes/Noticias/NoticiasPostulantes";
-function App() {
-  return (
-    <>
-{/* RUTA AL ENTRAR A LA PAGINA */}
-      <BrowserRouter>
-      <NavbarPostulantes/>
-        <Routes>
-          {/* Home */}
-          <Route exact path="/" element={<Home/>}/>
+import {Routes,Route,useLocation} from "react-router-dom"
 
-    {/* RUTAS P/LOGIN O VER EMPLEOS */}
-          {/* Home postulantes */}
-          <Route exact path="/home-postulantes" element={<HomePostulantes />}/>
-          <Route exact path="/empleos" element={<EmpleosPostulantes />}/>
-          <Route exact path="/noticias" element={<NoticiasPostulantes />}/>
-          <Route exact path="/mi%20perfil" element={<MiPerfilPostulantes />}/>
-          </Routes>
-      </BrowserRouter>
-    </>
-  );
+import "./App.css"
+
+import Home from "./pages/Home"
+import Ingresar from "./pages/Ingresar"
+import Error from "./pages/Error"
+import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
+import HomePostulantes from "./components/HomePostulantes"
+import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
+import NavbarPostulantes from './components/Navbar/NavbarPostulantes'
+import NoticiasPostulantes from "./components/Noticias/NoticiasPostulantes"
+import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
+
+
+export default function App() {
+
+    const location = useLocation()
+
+    return (
+        <>
+            {location.pathname !== "/" ? <NavbarPostulantes/> : <></>}
+            <Routes>
+                <Route exact path="/" element={<Home/>}/>
+                <Route exact path="/home-postulantes" element={<HomePostulantes />}/>
+                <Route exact path="/empleos" element={<EmpleosPostulantes />}/>
+                <Route exact path="/ingresar" element={<Ingresar />}/>
+                <Route exact path="/noticias" element={<NoticiasPostulantes />}/>
+                <Route exact path="/mi%20perfil" element={<MiPerfilPostulantes />}/>
+                <Route exact path="/*" element={<Error/>}/>
+                <Route exact path="/empleos/empleoDetail" element={<EmpleosPostulantesDetail />}/>
+            </Routes>
+      </>
+    )
+
 }
-
-export default App;
