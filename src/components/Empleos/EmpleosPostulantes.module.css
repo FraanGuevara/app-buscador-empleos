@@ -1,0 +1,158 @@
+.containerEmpleos{
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+}
+
+.containterCardEmpleos{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            345px, 1fr
+        )
+    );
+    gap: 25px;
+}
+
+.containterFiltrosEmpleos{
+    display: flex;
+    align-items:flex-start;
+    height: 100%;
+    position: fixed;
+    left: 0;
+}
+
+#filtrosEmpleos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+    width: 250px;
+    margin-top: 100px;
+    border-radius: 0 20px 20px 0 ;
+    background-color:rgb(255, 154, 6) !important;
+    ;
+}
+
+.filtrosEmpleosCasilla{
+    background-color: #fff;
+}
+
+#filtrosEmpleosTitulo{
+    color: #fff;
+    margin: 0 auto;
+}
+/* -------------  EMPLEOS DETAIL   ---------------------- */
+
+#botonVolverEmpleoDetail{
+    margin-top: 30px;
+    padding: 15px ;
+    background-color: #eaf3fb ;
+}
+
+.containterEmpleoDetail{
+    color: black;
+    margin-left: 8%;
+    width: 55%;
+    
+}
+
+.navbarEmpleoDetail{
+    width: 80%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #eaf3fb;
+    border-radius: 50px;
+    margin-top: 20px;
+}
+
+#navbarEmpleoDetailBoton{
+    color: rgb(255, 154, 6);
+    font-weight: bolder;
+    width: 200px;
+    border-radius: 50px;
+}
+#navbarEmpleoDetailBoton:focus{
+    background-color: rgb(255, 154, 6);
+    color: #fff;
+}
+
+.titulosEmpleoDetail{
+    margin: 5% 0;
+    font-size: 20px;
+}
+
+.descripcionEmpleoDetail{
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.descripcionEmpleoDetailParrafo{
+margin: 40px 0;
+}
+
+.cardEmpleo{
+    width: 300px;
+    height: 400px;
+    background-color: #eaf3fb;
+    position: fixed;
+    top:200px;
+    right: 100px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cardEmpleoEmpresa{
+    height: 180px;
+}
+.cardEmpleoFoto{
+    width: 100px;
+    border-radius: 100%;
+}
+.cardEmpleoTituloEmpleo{
+margin: 0;
+}
+
+.cardEmpleoBotonDiv{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardEmpleoBoton{
+    width: 70%;
+    color: #fff !important;
+    background-color: rgb(255, 154, 6) !important;
+    border-radius: 50px !important;
+}
+.cardEmpleoBotonGuardar{
+    width: 20%;
+    background-color: #bcdcfd !important;
+    border-radius: 5px!important;
+}
+
+.empresaEmpleoDetail{
+    font-size: 20px;
+}
+.empresaEmpleoDetailParrafo{
+margin: 25px 0;
+}
+
+.iconosEmpresa{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 100px;
+}
+
+.ofertasSimilares{
+    margin-top: 80px;
+    height: 300px;
+}

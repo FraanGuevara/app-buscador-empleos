@@ -10,6 +10,7 @@ import HomePostulantes from "./components/HomePostulantes"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavbarPostulantes from './components/Navbar/NavbarPostulantes'
 import NoticiasPostulantes from "./components/Noticias/NoticiasPostulantes"
+import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
                 <Route exact path="/noticias" element={<NoticiasPostulantes />}/>
                 <Route exact path="/mi%20perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
+                <Route exact path="/empleos/empleoDetail" element={<EmpleosPostulantesDetail />}/>
             </Routes>
       </>
     )

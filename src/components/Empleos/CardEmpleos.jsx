@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from './CardEmpleos.module.css'
+import { Link } from 'react-router-dom';
 
 export default function CardEmpleos() {
     return (
@@ -31,12 +32,14 @@ export default function CardEmpleos() {
                 backgroundColor:'#e5e5e5',
                 padding:'15px'
             }}>
-                <Button sx={{
-                    backgroundColor:'rgb(255, 154, 6)',
-                    border:'solid 2px rgb(255, 154, 6)',
-                    margin:'10px',
-                    color:'white'
-                }} id={styles.botonAplicar} size="small">Aplicar</Button>
+                <Link to='/empleos/empleoDetail'>
+                    <Button sx={{
+                        backgroundColor:'rgb(255, 154, 6)',
+                        border:'solid 2px rgb(255, 154, 6)',
+                        margin:'10px',
+                        color:'white'
+                    }} id={styles.botonAplicar} size="small">Ver Empleo</Button>
+                </Link>
                 <Button sx={{
                     backgroundColor:' #e5e5e5 ',
                     border:'solid 2px rgb(0, 105, 192)',

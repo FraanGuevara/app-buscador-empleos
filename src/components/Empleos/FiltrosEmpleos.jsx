@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import styles from './EmpleosPostulantes.module.css'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -91,13 +92,14 @@ export default function FiltrosEmpleos() {
 
     return (
         <>
-            <div>
-                <h1>FILTROS</h1>
+            <div id={styles.filtrosEmpleos}>
+                <h1 id={styles.filtrosEmpleosTitulo}>Filtros</h1>
                 {/* EXPERIENCIA */}
-                <div>
+                <div >
                     <FormControl sx={{ m: 1, width: 200 }}>
                         <InputLabel id="demo-multiple-checkbox-label">Experiencia</InputLabel>
                         <Select
+                            className={styles.filtrosEmpleosCasilla}
                             labelId="demo-multiple-checkbox-label"
                             id="demo-multiple-checkbox"
                             multiple
@@ -124,6 +126,7 @@ export default function FiltrosEmpleos() {
                     <FormControl sx={{ m: 1, width: 200 }}>
                         <InputLabel id="demo-multiple-checkbox-label">Rubro</InputLabel>
                         <Select
+                            className={styles.filtrosEmpleosCasilla}
                             labelId="demo-multiple-checkbox-label"
                             id="demo-multiple-checkbox"
                             multiple
@@ -150,6 +153,7 @@ export default function FiltrosEmpleos() {
                     <FormControl sx={{ m: 1, width: 200 }}>
                         <InputLabel id="demo-multiple-checkbox-label">Jornada</InputLabel>
                         <Select
+                            className={styles.filtrosEmpleosCasilla}
                             labelId="demo-multiple-checkbox-label"
                             id="demo-multiple-checkbox"
                             multiple
