@@ -3,13 +3,14 @@ import React from 'react'
 import styles from './EmpleosPostulantes.module.css'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { Link } from 'react-router-dom';
+import CardEmpleos from './CardEmpleos'
 
 export default function EmpleosPostulantesDetail() {
     return (
         <>
             <div className={styles.containterEmpleoDetail}>
                 <Link to='/empleos'>
-                <Button id={styles.botonVolverEmpleoDetail}>  ←  Volver al listado</Button></Link>
+                    <Button id={styles.botonVolverEmpleoDetail}>  ←  Volver al listado</Button></Link>
                 <div>
                     <div className={styles.titulosEmpleoDetail}>
                         <h1>Frontend Junior / Semi senior</h1>
@@ -39,16 +40,16 @@ export default function EmpleosPostulantesDetail() {
                 </div>
                 <div className={styles.cardEmpleo}>
                     <div className={styles.cardEmpleoEmpresa}>
-                    <img className={styles.cardEmpleoFoto} src="https://picsum.photos/200" alt="Logo empresa" />
-                    <h4>AZZA Informatica S.A. </h4>
-                    <p style={{color:'green', marginBottom:'80px'}}>Empresa verificada ✔️</p>
+                        <img className={styles.cardEmpleoFoto} src="https://picsum.photos/200" alt="Logo empresa" />
+                        <h4>AZZA Informatica S.A. </h4>
+                        <p style={{ color: 'green', marginBottom: '80px' }}>Empresa verificada ✔️</p>
                     </div>
                     <h2>Frontend Junior / Semi senior</h2>
                     <p style={{ display: 'inline', fontWeight: 'normal' }}>Rosario, Santa fe</p>
                     <div className={styles.cardEmpleoBotonDiv}>
-                    <Button className={styles.cardEmpleoBoton}> Postularme</Button>
-                    <Button className={styles.cardEmpleoBotonGuardar}> <BookmarkBorderIcon/> </Button>
-                    
+                        <Button className={styles.cardEmpleoBoton}> Postularme</Button>
+                        <Button className={styles.cardEmpleoBotonGuardar}> <BookmarkBorderIcon /> </Button>
+
                     </div>
                 </div>
                 <div className={styles.empresaEmpleoDetail}>
@@ -68,8 +69,15 @@ export default function EmpleosPostulantesDetail() {
                     </div>
                 </div>
                 <hr />
-                <div className={styles.ofertasSimilares}>
+
+                <div>
                     <h2>OFERTAS SIMILARES</h2>
+                    <div className={styles.ofertasSimilares}>
+                        <CardEmpleos />
+                        <CardEmpleos />
+                        <CardEmpleos />
+                        <CardEmpleos />
+                    </div>
                 </div>
             </div>
 

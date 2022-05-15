@@ -154,5 +154,13 @@ margin: 25px 0;
 
 .ofertasSimilares{
     margin-top: 80px;
-    height: 300px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(
+            345px, 1fr
+        )
+    );
+    gap: 25px;
 }
