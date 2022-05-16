@@ -30,7 +30,7 @@ export default function App() {
                 <Route exact path="/*" element={<Error/>}/>
                 <Route exact path="/empleos/empleoDetail" element={<EmpleosPostulantesDetail />}/>
             </Routes>
-      </>
+        </>
     )
 
 }
