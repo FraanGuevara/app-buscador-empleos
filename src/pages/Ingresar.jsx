@@ -254,6 +254,9 @@ export default function Ingresar(props) {
 
 
 /* 
-ijb9790@gmail.com          Hola1234
-plantabaja@estudiopb.com          Hola1234
+c3@c3.com.ar     Hola1234     empleador
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ29uc3RydWNjaW9uZXMgMyIsImVtYWlsIjoiYzNAYzMuY29tLmFyIiwicm9sZSI6ImVtcGxveWVyIiwiaWQiOiI2MjgzZGM0NmFlYWE4N2QzMmM3ZDM5ZTYiLCJpYXQiOjE2NTI4MDg3NzQsImV4cCI6MTY1MzQxMzU3NH0.Xn5wUP79tBDJEbmebYg_Zhrj7wzmD-AoONqZGMQQJj8
+
+jime.rodriguez@gmail.com     Hola1234     trabajador
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltZW5hIiwiZW1haWwiOiJqaW1lLnJvZHJpZ3VlekBnbWFpbC5jb20iLCJyb2xlIjoiYXBwbGljYW50IiwiaWQiOiI2MjgzZTNjYjlmNDBmODYxMTg4MjIwMWQiLCJpYXQiOjE2NTI4MTA2OTksImV4cCI6MTY1MzQxNTQ5OX0.uz4N6OGi94UM0-edaPiyi6AnorCjquc0c6g1nz7k9HA
 */
