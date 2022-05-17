@@ -1,10 +1,13 @@
 import React, {useState,useContext,useRef} from 'react'
+
 import {authContext} from '../context/AuthContext'
 import {Link as LinkRouter} from "react-router-dom"
 
 import Box from '@mui/material/Box'
+import PersonIcon from '@mui/icons-material/Person'
 import MailIcon from '@mui/icons-material/Mail'
 import KeyIcon from '@mui/icons-material/Key'
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Typography from '@mui/material/Typography'
 
 import '../App.css'
@@ -16,8 +19,9 @@ export default function Ingresar(props) {
     const mail = useRef()
     const pass = useRef()
     const name = useRef()
+    const role = useRef()
 
-    const mainApi = "http://localhost:4000/api/"
+    const mainApi = "https://backendnodejstzuzulcode.uw.r.appspot.com/api/"
     
     const handleRegister = (event) => {
         event.preventDefault()
@@ -59,7 +63,8 @@ export default function Ingresar(props) {
             body:JSON.stringify({
                 name:name.current.value,
                 email: mail.current.value,
-                password:pass.current.value
+                password:pass.current.value,
+                role:role.current.value
             })
         })
         .then(res => res.json())
@@ -82,7 +87,7 @@ export default function Ingresar(props) {
                             border: '5px solid rgb(0, 105, 192)',
                             borderRadius: '50px'}}>
                             <label htmlFor="name">
-                                <MailIcon sx={{
+                                <PersonIcon sx={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
@@ -144,6 +149,32 @@ export default function Ingresar(props) {
                         </Box>
                         <Box sx={{
                             display: 'flex',
+                            width: '60%',
+                            minWidth: '280px',
+                            backgroundColor: 'rgb(0, 105, 192)',
+                            border: '5px solid rgb(0, 105, 192)',
+                            borderRadius: '50px',
+                            marginTop: '5px'}}>
+                            <label htmlFor="role">
+                                <SupervisorAccountIcon sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: '40px',
+                                    height: '40px',
+                                    color: 'white',
+                                    backgroundColor: 'rgb(0, 105, 192)',
+                                    border: '0 solid rgb(0, 105, 192)',
+                                    borderRadius: '50px 0 0 50px',
+                                    padding: '10px'}}/>
+                            </label>
+                            <select id="role" name="role" className='myInput' ref={role}>
+                                <option value="applicant">postulante</option>
+                                <option value="employer">empleador</option>
+                            </select>
+                        </Box>
+                        <Box sx={{
+                            display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
                             width: '60%',
@@ -155,7 +186,6 @@ export default function Ingresar(props) {
                             <div className='myButtonDiv' onClick={handleRegister}>ingresar</div>
                         </Box>
                     </form>
-
                 ) : (
                     <form onSubmit={handleSignin} className='w100'>
                         <Box sx={{
@@ -222,3 +252,9 @@ export default function Ingresar(props) {
     )
 
 }
+
+
+/* 
+ijb9790@gmail.com          Hola1234
+plantabaja@estudiopb.com          Hola1234
+*/

@@ -9,7 +9,6 @@ import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
 import HomePostulantes from "./components/HomePostulantes"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavbarPostulantes from './components/Navbar/NavbarPostulantes'
-import NoticiasPostulantes from "./components/Noticias/NoticiasPostulantes"
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
 
 
@@ -25,7 +24,6 @@ export default function App() {
                 <Route exact path="/home-postulantes" element={<HomePostulantes />}/>
                 <Route exact path="/empleos" element={<EmpleosPostulantes />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
-                <Route exact path="/noticias" element={<NoticiasPostulantes />}/>
                 <Route exact path="/mi%20perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
                 <Route exact path="/empleos/empleoDetail" element={<EmpleosPostulantesDetail />}/>
