@@ -67,7 +67,18 @@ export default function Ingresar(props) {
             })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if (data.error) {
+                console.log(data)
+            } else {
+                localStorage.setItem("token",data.token)
+                context.setAuth({
+                    id:data.user.id,
+                    name:data.user.name,
+                    logged:true
+                })
+            }
+        })
         .catch(error => console.log(error))
     }
 
