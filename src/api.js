@@ -7,6 +7,7 @@ const instance = axios.create({
 })
 
 const post = (url,data) => {
+    console.log(data)
     return instance.post(url,data)
 }
 

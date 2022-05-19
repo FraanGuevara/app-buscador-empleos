@@ -1,4 +1,5 @@
-import * as React from 'react';
+import * as React from 'react'
+import {useContext} from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,28 +12,34 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import styles from './NavbarPostulantes.module.css';
 
-
-
-const pages = ['empleos', 'noticias', 'mi perfil'];
+const userPages = ['trabajar', 'postulaciones']
+const empPages = ['ofrecer', 'postulaciones']
+let pages = []
 
 export default function ResponsiveAppBar() {
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
-    };
+    }
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
-    };
-
-
+    }
+    
+    const role = localStorage.getItem("role")
+    if (role==="employer") {
+        pages = empPages
+    } else if (role==="applicant") {
+        pages = userPages
+    }
 
     return (
         <>
             <div style={{ backgroundColor: 'black', overflow: 'hidden', textOverflow: 'clip' }}>
             </div>
-            <AppBar id={styles.navbarAllproducts} position="relative" >
+            <AppBar id={styles.navbarAllproducts} position="fixed" >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
 

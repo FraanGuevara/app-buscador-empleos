@@ -11,6 +11,9 @@ body {
   color: white;
 }
 
+.position {
+  position: absolute;
+}
 .w100 {
   width: 100%;
   display: flex;
