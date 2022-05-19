@@ -10,6 +10,8 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Typography from '@mui/material/Typography'
 
 import '../App.css'
+import {post} from '../api'
+import {useNavigate} from 'react-router-dom'
 
 export default function Ingresar(props) {
 
@@ -19,8 +21,7 @@ export default function Ingresar(props) {
     const pass = useRef()
     const name = useRef()
     const role = useRef()
-
-    const mainApi = "https://backendnodejstzuzulcode.uw.r.appspot.com/api/"
+    const navigate = useNavigate()
     
     const handleRegister = (event) => {
         event.preventDefault()
@@ -29,45 +30,33 @@ export default function Ingresar(props) {
 
     const handleSignin = (event) => {
         event.preventDefault()
-        fetch(mainApi+"auth/login", {
-            method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:JSON.stringify({
-                email: mail.current.value,
-                password: pass.current.value
-            })
+        post("auth/login" ,{
+            email: mail.current.value,
+            password: pass.current.value
         })
-        .then(res => res.json())
         .then(data => {
-            localStorage.setItem("token",data.token)
+            const {token,user} = data.data
+            localStorage.setItem("token",token)
             context.setAuth({
-                id:data.user.id,
-                name:data.user.name,
+                id:user.id,
+                name:user.name,
                 logged:true
             })
-            fetch(mainApi+"users", {
-                headers:{"Authorization":"Bearer "+localStorage.getItem("token")}
+            navigate("/",{
+                replace:true
             })
-            .then(response => response.json())
-            .then(data => console.log(data))
         })
-        .catch(error => console.log(error))
     }
 
     const handleSignup = (event) => {
         event.preventDefault()
-        fetch(mainApi+"auth/signup",{
-            method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:JSON.stringify({
-                name:name.current.value,
-                email: mail.current.value,
-                password:pass.current.value,
-                role:role.current.value
-            })
+        post("auth/signup" ,{
+            name:name.current.value,
+            email: mail.current.value,
+            password:pass.current.value,
+            role:role.current.value
         })
-        .then(res => res.json())
-        .then(data => {
+        .then(({data}) => {
             if (data.error) {
                 console.log(data)
             } else {
@@ -78,8 +67,10 @@ export default function Ingresar(props) {
                     logged:true
                 })
             }
+            navigate("/",{
+                replace:true
+            })
         })
-        .catch(error => console.log(error))
     }
 
     return (
