@@ -1,4 +1,4 @@
-import React,{createContext, useState} from 'react'
+import React,{createContext,useState} from 'react'
 
 export const authContext = createContext()
 
@@ -10,11 +10,10 @@ export default function AuthProvider({children}) {
         logged:false
     })
 
-  return (
-    <authContext.Provider value={{
-        auth,setAuth
-    }}>
-        {children}
-    </authContext.Provider>
-  )
+    return (
+        <authContext.Provider value={{auth,setAuth}}>
+            {children}
+        </authContext.Provider>
+    )
+    
 }

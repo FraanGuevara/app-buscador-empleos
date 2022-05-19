@@ -1,3 +1,4 @@
+import {useContext,useEffect} from 'react'
 import {Routes,Route,useLocation} from "react-router-dom"
 
 import "./App.css"
@@ -10,11 +11,28 @@ import HomePostulantes from "./components/HomePostulantes"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavbarPostulantes from './components/Navbar/NavbarPostulantes'
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
+import {authContext} from './context/AuthContext'
+import {postJwt} from './api'
 
 
 export default function App() {
 
     const location = useLocation()
+    const context = useContext(authContext)
+
+    useEffect(() => {
+        postJwt("auth/validate")
+        .then(({data}) => {
+            if (data.failed) {console.log(data)}
+            else {
+                context.setAuth({
+                    id:data.user.id,
+                    name:data.user.name,
+                    logged:true
+                })
+            }
+        })
+    },[])
 
     return (
         <>

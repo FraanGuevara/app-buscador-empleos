@@ -10,6 +10,8 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Typography from '@mui/material/Typography'
 
 import '../App.css'
+import {post} from '../api'
+import {useNavigate} from 'react-router-dom'
 
 export default function Ingresar(props) {
 
@@ -19,8 +21,7 @@ export default function Ingresar(props) {
     const pass = useRef()
     const name = useRef()
     const role = useRef()
-
-    const mainApi = "https://backendnodejstzuzulcode.uw.r.appspot.com/api/"
+    const navigate = useNavigate()
     
     const handleRegister = (event) => {
         event.preventDefault()
@@ -29,46 +30,47 @@ export default function Ingresar(props) {
 
     const handleSignin = (event) => {
         event.preventDefault()
-        fetch(mainApi+"auth/login", {
-            method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:JSON.stringify({
-                email: mail.current.value,
-                password: pass.current.value
-            })
+        post("auth/login" ,{
+            email: mail.current.value,
+            password: pass.current.value
         })
-        .then(res => res.json())
         .then(data => {
-            localStorage.setItem("token",data.token)
+            const {token,user} = data.data
+            localStorage.setItem("token",token)
             context.setAuth({
-                id:data.user.id,
-                name:data.user.name,
+                id:user.id,
+                name:user.name,
                 logged:true
             })
-            fetch(mainApi+"users", {
-                headers:{"Authorization":"Bearer "+localStorage.getItem("token")}
+            navigate("/",{
+                replace:true
             })
-            .then(response => response.json())
-            .then(data => console.log(data))
         })
-        .catch(error => console.log(error))
     }
 
     const handleSignup = (event) => {
         event.preventDefault()
-        fetch(mainApi+"auth/signup",{
-            method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:JSON.stringify({
-                name:name.current.value,
-                email: mail.current.value,
-                password:pass.current.value,
-                role:role.current.value
+        post("auth/signup" ,{
+            name:name.current.value,
+            email: mail.current.value,
+            password:pass.current.value,
+            role:role.current.value
+        })
+        .then(({data}) => {
+            if (data.error) {
+                console.log(data)
+            } else {
+                localStorage.setItem("token",data.token)
+                context.setAuth({
+                    id:data.user.id,
+                    name:data.user.name,
+                    logged:true
+                })
+            }
+            navigate("/",{
+                replace:true
             })
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error))
     }
 
     return (
@@ -254,6 +256,9 @@ export default function Ingresar(props) {
 
 
 /* 
-ijb9790@gmail.com          Hola1234
-plantabaja@estudiopb.com          Hola1234
+c3@c3.com.ar     Hola1234     empleador
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ29uc3RydWNjaW9uZXMgMyIsImVtYWlsIjoiYzNAYzMuY29tLmFyIiwicm9sZSI6ImVtcGxveWVyIiwiaWQiOiI2MjgzZGM0NmFlYWE4N2QzMmM3ZDM5ZTYiLCJpYXQiOjE2NTI4MDg3NzQsImV4cCI6MTY1MzQxMzU3NH0.Xn5wUP79tBDJEbmebYg_Zhrj7wzmD-AoONqZGMQQJj8
+
+jime.rodriguez@gmail.com     Hola1234     trabajador
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltZW5hIiwiZW1haWwiOiJqaW1lLnJvZHJpZ3VlekBnbWFpbC5jb20iLCJyb2xlIjoiYXBwbGljYW50IiwiaWQiOiI2MjgzZTNjYjlmNDBmODYxMTg4MjIwMWQiLCJpYXQiOjE2NTI4MTA2OTksImV4cCI6MTY1MzQxNTQ5OX0.uz4N6OGi94UM0-edaPiyi6AnorCjquc0c6g1nz7k9HA
 */
