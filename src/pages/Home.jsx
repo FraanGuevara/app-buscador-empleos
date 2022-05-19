@@ -8,6 +8,18 @@ import HomeIcon from '@mui/icons-material/Home'
 import '../App.css'
 
 export default function Home() {
+
+    let roleOptions = []
+    const token = localStorage.getItem("token")
+    const role = localStorage.getItem("role")
+    if (role) {
+        if (role==="employer") {
+            roleOptions = ["contratar","postulaciones"]
+        } else if (role==="applicant") {
+            roleOptions = ["trabajar","postulaciones"]
+        }
+    }
+
     return (
         <div className='home'>
             <div className='home-img' />
@@ -55,8 +67,9 @@ export default function Home() {
                                 </Typography> 
                         </Box>
                     </LinkRouter>
+                    {token? <></> : (
                     <LinkRouter to={'/ingresar'}>
-                        <Box sx={{
+                        <Box sx={{ 
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -80,6 +93,7 @@ export default function Home() {
                                 </Typography> 
                         </Box>
                     </LinkRouter>
+                    )}
                 </div>
             </div>
         </div>
