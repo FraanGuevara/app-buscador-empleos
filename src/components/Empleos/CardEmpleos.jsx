@@ -3,17 +3,28 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import CardHeader from '@mui/material/CardHeader';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from './CardEmpleos.module.css'
 import { Link } from 'react-router-dom';
 
-export default function CardEmpleos() {
+export default function CardEmpleos({empleos}) {
+
+    console.log(empleos)
+
     return (
-        <Card elevation={24} sx={{ 
+
+        empleos.map(empleo =>(
+        <Card elevation={24} key={empleo.id} sx={{ 
             maxWidth: 345,
             margin:'5%',
         }}>
+            <CardHeader
+                title={empleo.title}
+                subheader={empleo.location.province}
+                
+                    />
             <CardMedia
                 component="img"
                 height="200"
@@ -21,17 +32,15 @@ export default function CardEmpleos() {
                 alt=""
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Empleo
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta ut, necessitatibus deserunt molestiae ullam illo corporis praesentium quo, delectus consectetur perferendis enim assumenda id accusamus quaerat labore laudantium tempore odio?
+                <Typography variant="body1" color="text.primary">
+                    {empleo.description}
                 </Typography>
             </CardContent>
             <CardActions sx={{
                 backgroundColor:'#e5e5e5',
                 padding:'15px'
             }}>
+                
                 <Link to='/empleos/empleoDetail'>
                     <Button sx={{
                         backgroundColor:'rgb(255, 154, 6)',
@@ -48,5 +57,7 @@ export default function CardEmpleos() {
                 }} id={styles.botonGuardar} size="small">Guardar</Button>
             </CardActions>
         </Card>
+        ))
+    
     );
 }
