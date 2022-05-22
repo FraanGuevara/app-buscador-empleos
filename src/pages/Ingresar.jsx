@@ -76,9 +76,12 @@ export default function Ingresar(props) {
     }
 
     return (
-        <div className='login'>
-            <div className='login-color'>
-                <Typography variant="h1" sx={{
+        <div className='division'>
+            <div className='login'>
+                <div className='login-color' />
+            </div>
+            <div className='loginForm'>
+                <Typography variant="h4" sx={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
