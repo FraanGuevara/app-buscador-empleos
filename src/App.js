@@ -44,7 +44,7 @@ export default function App() {
                 <Route exact path="/ingresar" element={<Ingresar />}/>
                 <Route exact path="/mi%20perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
-                <Route exact path="/empleos/empleoDetail" element={<EmpleosPostulantesDetail />}/>
+                <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
             </Routes>
         </>
     )

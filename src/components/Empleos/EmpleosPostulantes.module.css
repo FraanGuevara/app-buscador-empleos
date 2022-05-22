@@ -45,41 +45,29 @@
 }
 /* -------------  EMPLEOS DETAIL   ---------------------- */
 
+.containterEmpleoDetail{
+    color: black;
+    margin-left: 5%;
+}
+
+
 #botonVolverEmpleoDetail{
     margin-top: 30px;
     padding: 15px ;
     background-color: #eaf3fb ;
 }
 
-.containterEmpleoDetail{
-    color: black;
-    margin-left: 8%;
-    width: 55%;
-    
-}
 
-.navbarEmpleoDetail{
-    width: 80%;
-    height: 50px;
+.containerEmpleo{
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    background-color: #eaf3fb;
-    border-radius: 50px;
-    margin-top: 20px;
+    width: 100%;
 }
 
-#navbarEmpleoDetailBoton{
-    color: rgb(255, 154, 6);
-    font-weight: bolder;
-    width: 200px;
-    border-radius: 50px;
+.EmpleoDetalle{
+    width: 50%;
 }
-#navbarEmpleoDetailBoton:focus{
-    background-color: rgb(255, 154, 6);
-    color: #fff;
-}
+
 
 .titulosEmpleoDetail{
     margin: 5% 0;
@@ -97,12 +85,9 @@ margin: 40px 0;
 }
 
 .cardEmpleo{
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
     background-color: #eaf3fb;
-    position: fixed;
-    top:200px;
-    right: 100px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -117,21 +102,18 @@ margin: 40px 0;
     width: 100px;
     border-radius: 100%;
 }
-.cardEmpleoTituloEmpleo{
-margin: 0;
-}
 
 .cardEmpleoBotonDiv{
     margin-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .cardEmpleoBoton{
-    width: 70%;
+    width: 30%;
     color: #fff !important;
     background-color: rgb(255, 154, 6) !important;
-    border-radius: 50px !important;
+    border-radius: 10px !important;
 }
 .cardEmpleoBotonGuardar{
     width: 20%;
@@ -143,7 +125,7 @@ margin: 0;
     font-size: 20px;
 }
 .empresaEmpleoDetailParrafo{
-margin: 25px 0;
+margin: 15px 0;
 }
 
 .iconosEmpresa{
