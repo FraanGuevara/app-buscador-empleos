@@ -6,10 +6,11 @@ import "./App.css"
 import Home from "./pages/Home"
 import Ingresar from "./pages/Ingresar"
 import Error from "./pages/Error"
+import NuevoTrabajo from './pages/NuevoTrabajo'
 import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
 import HomePostulantes from "./components/HomePostulantes"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
-import NavbarPostulantes from './components/Navbar/NavbarPostulantes'
+import NavBar from './components/navBar'
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
 import {authContext} from './context/AuthContext'
 import {postJwt} from './api'
@@ -36,15 +37,21 @@ export default function App() {
 
     return (
         <>
-            {location.pathname !== "/" ? <NavbarPostulantes/> : <></>}
+            {location.pathname === "/" ? <></> : location.pathname === "/inicio" ? <></> : <NavBar />}
             <Routes>
                 <Route exact path="/" element={<Home/>}/>
-                <Route exact path="/home-postulantes" element={<HomePostulantes />}/>
-                <Route exact path="/empleos" element={<EmpleosPostulantes />}/>
+                <Route exact path="/inicio" element={<Home/>}/>
+                <Route exact path="/postulaciones" element={<HomePostulantes />}/>
+                <Route exact path="/trabajar" element={<EmpleosPostulantes />}/>
+                <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
-                <Route exact path="/mi%20perfil" element={<MiPerfilPostulantes />}/>
+                <Route exact path="/perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
+<<<<<<< HEAD
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
+=======
+                <Route exact path="/trabajar/postular" element={<EmpleosPostulantesDetail />}/>
+>>>>>>> igna
             </Routes>
         </>
     )

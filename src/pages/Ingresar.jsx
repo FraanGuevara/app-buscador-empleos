@@ -37,6 +37,7 @@ export default function Ingresar(props) {
         .then(data => {
             const {token,user} = data.data
             localStorage.setItem("token",token)
+            localStorage.setItem("role",user.role)
             context.setAuth({
                 id:user.id,
                 name:user.name,
@@ -61,6 +62,7 @@ export default function Ingresar(props) {
                 console.log(data)
             } else {
                 localStorage.setItem("token",data.token)
+                localStorage.setItem("role",data.user.role)
                 context.setAuth({
                     id:data.user.id,
                     name:data.user.name,
@@ -74,15 +76,27 @@ export default function Ingresar(props) {
     }
 
     return (
-        <div className='home'>
-            <div className='home-img' />
-            <div className='home-ingreso'>
-                <Typography variant="h1" sx={{fontFamily: 'Macondo', padding: '10px', color: 'white'}}>Bienvenido!</Typography>
+        <div className='login'>
+            <div className='login-color'>
+                <Typography variant="h1" sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'Macondo',
+                    padding: '10px',
+                    margin: '10px',
+                    color: 'white',
+                    width: '40%',
+                    minWidth: '280px',
+                    backgroundColor: 'rgba(0, 105, 192, 0.8)',
+                    borderRadius: '50px'}}>
+                    Bienvenido!
+                </Typography>
                 {register ? (
                     <form onSubmit={handleSignup} className='w100'>
                         <Box sx={{
                             display: 'flex',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             backgroundColor: 'rgb(0, 105, 192)',
                             border: '5px solid rgb(0, 105, 192)',
@@ -104,7 +118,7 @@ export default function Ingresar(props) {
                         </Box>
                         <Box sx={{
                             display: 'flex',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             backgroundColor: 'rgb(0, 105, 192)',
                             border: '5px solid rgb(0, 105, 192)',
@@ -127,7 +141,7 @@ export default function Ingresar(props) {
                         </Box>
                         <Box sx={{
                             display: 'flex',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             backgroundColor: 'rgb(0, 105, 192)',
                             border: '5px solid rgb(0, 105, 192)',
@@ -150,7 +164,7 @@ export default function Ingresar(props) {
                         </Box>
                         <Box sx={{
                             display: 'flex',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             backgroundColor: 'rgb(0, 105, 192)',
                             border: '5px solid rgb(0, 105, 192)',
@@ -178,7 +192,7 @@ export default function Ingresar(props) {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             height: '50px',
                             borderRadius: '50px',
@@ -191,7 +205,7 @@ export default function Ingresar(props) {
                     <form onSubmit={handleSignin} className='w100'>
                         <Box sx={{
                             display: 'flex',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             backgroundColor: 'rgb(0, 105, 192)',
                             border: '5px solid rgb(0, 105, 192)',
@@ -213,7 +227,7 @@ export default function Ingresar(props) {
                         </Box>
                         <Box sx={{
                             display: 'flex',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             backgroundColor: 'rgb(0, 105, 192)',
                             border: '5px solid rgb(0, 105, 192)',
@@ -238,7 +252,7 @@ export default function Ingresar(props) {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            width: '60%',
+                            width: '40%',
                             minWidth: '280px',
                             height: '50px',
                             borderRadius: '50px',
@@ -248,8 +262,8 @@ export default function Ingresar(props) {
                         </Box>
                     </form>
                 )}
-            </div>
         </div>
+    </div>
     )
 
 }
