@@ -11,10 +11,10 @@ import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 
-//import '../styles/styles.css'
-
 import LogOutItem from './logOutItem'
 import LogOutNav from './logOutNav'
+
+import '../App.css'
 
 const userPages = ['trabajar','postulaciones','salir']
 const empPages = ['ofrecer','postulaciones','salir']
@@ -34,21 +34,22 @@ export default function NavBar(props) {
     }
 
     return (
-        <AppBar position="sticky">
-            <Container maxWidth="100%" sx={{backgroundColor: 'rgb(165, 126, 196)'}}>
+        <AppBar position="fixed">
+            <Container maxWidth="100%" sx={{backgroundColor: 'rgb(233, 121, 26)'}}>
                 <Toolbar disableGutters sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignContent: 'center'}}>
                     {/* //////////logo////////// */}
-                    <Typography variant="h2" noWrap className='festiveFont' sx={{
+                    <Typography variant="h2" noWrap sx={{
                         display: { xs: 'none', md: 'flex'},
                         justifyContent:'center',
                         alignItems:'center',
                         paddingRight: '20px',
                         paddingTop: '10px',
                         paddingBottom: '10px',
-                        color: 'white'}}>
+                        color: 'white',
+                        fontFamily: 'Macondo'}}>
                         RosarioJobs
                     </Typography>
                     {/* //////////icono de navegacion responsive////////// */}
@@ -71,7 +72,7 @@ export default function NavBar(props) {
                                 page!=="salir"? (
                                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                                         <LinkRouter to={'/'+page}>
-                                            <Typography className='fredokaFont' sx={{color: 'black'}}>{page}</Typography>
+                                            <Typography sx={{color: 'black',fontFamily: 'Radio Canada'}}>{page}</Typography>
                                         </LinkRouter>
                                     </MenuItem>
                                 ) : <LogOutItem page={page} />
@@ -80,7 +81,12 @@ export default function NavBar(props) {
                         </Menu>
                     </Box>
                     {/* //////////logo responsive////////// */}
-                    <Typography variant="h3" noWrap className='festiveFont titleResp' sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, paddingTop: '10px', paddingBottom: '10px'}}>
+                    <Typography variant="h3" noWrap sx={{
+                        flexGrow: 1,
+                        display: { xs: 'flex', md: 'none' },
+                        paddingTop: '10px',
+                        paddingBottom: '10px',
+                        fontFamily: 'Macondo'}}>
                         RosarioJobs
                     </Typography>
                     {/* //////////barra de navegacion////////// */}

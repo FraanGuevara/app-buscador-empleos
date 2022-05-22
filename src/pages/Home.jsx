@@ -61,7 +61,7 @@ export default function Home() {
                             </Box>
                         </LinkRouter>
                     ) : (
-                        <LinkRouter to={'/contratar'}>
+                        <LinkRouter to={'/ofrecer'}>
                             <Box sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -82,7 +82,7 @@ export default function Home() {
                                         alignItems:'flex-end',
                                         justifyContent:'center',
                                         fontFamily: 'Macondo'}}>
-                                        contratar!
+                                        ofrecer!
                                     </Typography> 
                             </Box>
                         </LinkRouter>

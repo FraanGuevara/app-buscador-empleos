@@ -6,6 +6,7 @@ import "./App.css"
 import Home from "./pages/Home"
 import Ingresar from "./pages/Ingresar"
 import Error from "./pages/Error"
+import NuevoTrabajo from './pages/NuevoTrabajo'
 import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
 import HomePostulantes from "./components/HomePostulantes"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
@@ -42,6 +43,7 @@ export default function App() {
                 <Route exact path="/inicio" element={<Home/>}/>
                 <Route exact path="/postulaciones" element={<HomePostulantes />}/>
                 <Route exact path="/trabajar" element={<EmpleosPostulantes />}/>
+                <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
                 <Route exact path="/perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
