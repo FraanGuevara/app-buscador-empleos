@@ -14,23 +14,12 @@ import { ConstructionOutlined } from '@mui/icons-material';
 export default function CardEmpleosGuardados() {
 
     const [empleoGuardado, setEmpleoGuardado] = useState([]);
-    const [arrLocal, setArrLocal] = useState([]);
-
 
     useEffect(() => {
-        setArrLocal(JSON.parse(localStorage.getItem('jobsSave')));
-        arrLocal.map((id) => {
-            getJwt('jobs/' + id)
-                .then((res) => {
-                    setEmpleoGuardado([...empleoGuardado, res.data])
-                })
-        })
+        setEmpleoGuardado(JSON.parse(localStorage.getItem('jobsSave')));
     }, []) 
 
-    /* console.log(arrLocal) */
-    console.log(empleoGuardado)
-
-    /* console.log(empleoGuardado) */
+    
     return (
         empleoGuardado.map(empleo => (
             <Card elevation={24} key={empleo.id} sx={{

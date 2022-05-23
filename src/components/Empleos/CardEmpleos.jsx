@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -12,26 +12,29 @@ import { Link } from 'react-router-dom';
 
 export default function CardEmpleos({ empleos }) {
 
-/*     const traerEmpleos = ()=>{
-        const arrLocal = JSON.parse(localStorage.getItem('jobsSave'));
-        arrLocal.map( id =>{
-            getJwt("jobs/" + id)
-            .then(res => console.log(res))
-            .catch(error => console.log(error))
-        })
-    } */
+    const [estadoGuardarEmpleo, setEstadoGuardarEmpleo] = useState(false);
+    /* const [inicioEstado, setInicioEstado] = useState(Boolean); */
 
-    const funcionGuardarEmpleo = (id) => {
+
+
+    const funcionGuardarEmpleo = (empleo) => {
         const arrLocal = JSON.parse(localStorage.getItem('jobsSave')) || [];
-        const searchId = arrLocal.indexOf(id);
+        const searchEmpleo = arrLocal.find(item => item._id === empleo._id);
         
-        if (searchId === -1) {
-            const newArr = [...arrLocal, id];
-            localStorage.setItem('jobsSave',  JSON.stringify(newArr))
+        if (searchEmpleo === undefined) {
+            const newArr = [...arrLocal, empleo];
+            localStorage.setItem('jobsSave', JSON.stringify(newArr))
+            setEstadoGuardarEmpleo(true)
         } else {
-            alert('ya tienes este trabajo guardado')
+            alert('Sacado de favoritos')
+            setEstadoGuardarEmpleo(false)
         }
     }
+
+    useEffect(() => {
+        
+    }, [])
+    
 
     return (
         empleos.map(empleo => (
@@ -67,14 +70,32 @@ export default function CardEmpleos({ empleos }) {
                             color: 'white'
                         }} id={styles.botonAplicar} size="small">Ver Empleo</Button>
                     </Link>
+
+                    {estadoGuardarEmpleo === false ?
                     <Button sx={{
                         backgroundColor: ' #e5e5e5 ',
                         border: 'solid 2px rgb(0, 105, 192)',
                         margin: '10px',
                         color: 'rgb(0, 105, 192)'
                     }} onClick={()=>{
-                        funcionGuardarEmpleo(empleo._id);}
-                        } id={styles.botonGuardar} size="small">Guardar</Button>
+                        funcionGuardarEmpleo(empleo);}
+                        } id={styles.botonGuardar} size="small">Guardar</Button> :
+                        <Button sx={{
+                            backgroundColor: ' #e5e5e5 ',
+                            border: 'solid 2px rgb(0, 105, 192)',
+                            margin: '10px',
+                            color: 'rgb(0, 105, 192)'
+                        }} onClick={()=>{
+                            funcionGuardarEmpleo(empleo);}} id={styles.botonGuardar} size="small">No guardar</Button>
+                    }
+                    {/* <Button sx={{
+                        backgroundColor: ' #e5e5e5 ',
+                        border: 'solid 2px rgb(0, 105, 192)',
+                        margin: '10px',
+                        color: 'rgb(0, 105, 192)'
+                    }} onClick={()=>{
+                        funcionGuardarEmpleo(empleo);}
+                        } id={styles.botonGuardar} size="small">Guardar</Button> */}
                 </CardActions>
             </Card>
         ))
