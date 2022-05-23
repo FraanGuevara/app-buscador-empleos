@@ -12,9 +12,10 @@ export default function EmpleosPostulantesDetail() {
     const [empleador, setEmpleador] = useState([]);
     const [pais, setPais] = useState('');
     const [provincia, setProvincia] = useState('');
-    const [categorias, setCategorias] = ('')
+    const [estadoPostulacion, setEstadoPostulacion] = useState(false)
     const { id } = useParams();
     const { title, description, salary } = empleo;
+
 
     useEffect(() => {
         getJwt("jobs/" + id)
@@ -23,19 +24,33 @@ export default function EmpleosPostulantesDetail() {
                 setEmpleador(res.data.employer)
                 setPais(res.data.location.country);
                 setProvincia(res.data.location.province);
+                setEstadoPostulacion(()=>{
+                    const searchId = res.data.applicants;
+                    const idPostulante = localStorage.getItem('id');
+                    const resultadoSearch = searchId.find(elemento =>{
+                        return elemento.id === idPostulante
+                    })
+                    if(resultadoSearch === undefined){
+                        setEstadoPostulacion(false)
+                    }else{
+                        setEstadoPostulacion(true)
+                    }
+                }
+                );
             })
             .catch(error => console.log(error));
     }, [])
 
-    const aplicar = () => {
+    const apply = () => {
         putJwt(`jobs/apply/` + id)
             .then(result => {
                 if(result.data.error === true){
                     alert('Lo siento, ya has aplicado al empleo')
+                    
                 }else{
                     alert('Muchas gracias por aplicar!')
+                    setEstadoPostulacion(true)
                 }
-                console.log(result)
             })
             .catch(error => {
                 console.log(error)
@@ -49,15 +64,14 @@ export default function EmpleosPostulantesDetail() {
                     alert('Lo siento, no has aplicado a este empleo')
                 }else{
                     alert('Tu postulacion a sido removida ')
+                    setEstadoPostulacion(false)
                 }
-                console.log(result)
             })
             .catch(error => {
                 console.log(error)
             })
     }
 
-    console.log(empleo)
     return (
         <>
             <div className={styles.containterEmpleoDetail}>
@@ -98,8 +112,9 @@ export default function EmpleosPostulantesDetail() {
                             <p className={styles.empresaEmpleoDetailParrafo}>{empleador.email}</p>
                         </div>
                         <div className={styles.cardEmpleoBotonDiv}>
-                            <Button className={styles.cardEmpleoBoton} onClick={aplicar}> Postularme</Button>
-                            <Button className={styles.cardEmpleoBoton} onClick={unApply}> Anular Solicitud</Button>
+                            {estadoPostulacion === false ? 
+                            <Button className={styles.cardEmpleoBoton} onClick={apply}> Postularme</Button> :
+                            <Button className={styles.cardEmpleoBoton} onClick={unApply}> Anular Solicitud</Button>}
                             <Button className={styles.cardEmpleoBotonGuardar}> <BookmarkBorderIcon /> </Button>
                         </div>
                     </div>

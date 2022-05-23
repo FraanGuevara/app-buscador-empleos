@@ -38,6 +38,7 @@ export default function Ingresar(props) {
             const {token,user} = data.data
             localStorage.setItem("token",token)
             localStorage.setItem("role",user.role)
+            localStorage.setItem("id",user.id)
             context.setAuth({
                 id:user.id,
                 name:user.name,
