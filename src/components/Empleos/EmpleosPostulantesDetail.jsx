@@ -57,7 +57,7 @@ export default function EmpleosPostulantesDetail() {
             })
     }
 
-
+    console.log(empleo)
     return (
         <>
             <div className={styles.containterEmpleoDetail}>

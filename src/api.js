@@ -18,7 +18,6 @@ const postJwt = async (url, data) => {
 
 
 /* Funcion para traer todos los empleos */
->>>>>>> igna
 const getJwt = (web, data)=>{
     const token = localStorage.getItem("token");
     if (token) {
