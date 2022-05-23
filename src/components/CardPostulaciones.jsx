@@ -10,7 +10,6 @@ import styles from '../components/Empleos/CardEmpleos.module.css'
 import { Link } from 'react-router-dom';
 
 export default function CardPostulaciones({postulacion}) {
-console.log(postulacion)
 
     return (
         postulacion.map(postulacion =>(

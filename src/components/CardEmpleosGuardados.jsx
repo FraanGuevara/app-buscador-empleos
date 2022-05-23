@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -6,35 +6,33 @@ import CardMedia from '@mui/material/CardMedia';
 import CardHeader from '@mui/material/CardHeader';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import styles from './CardEmpleos.module.css'
+import styles from '../components/Empleos/CardEmpleos.module.css'
 import { Link } from 'react-router-dom';
-/* import { getJwt } from '../../api' */
+import { getJwt } from '../api';
+import { ConstructionOutlined } from '@mui/icons-material';
 
-export default function CardEmpleos({ empleos }) {
+export default function CardEmpleosGuardados() {
 
-/*     const traerEmpleos = ()=>{
-        const arrLocal = JSON.parse(localStorage.getItem('jobsSave'));
-        arrLocal.map( id =>{
-            getJwt("jobs/" + id)
-            .then(res => console.log(res))
-            .catch(error => console.log(error))
+    const [empleoGuardado, setEmpleoGuardado] = useState([]);
+    const [arrLocal, setArrLocal] = useState([]);
+
+
+    useEffect(() => {
+        setArrLocal(JSON.parse(localStorage.getItem('jobsSave')));
+        arrLocal.map((id) => {
+            getJwt('jobs/' + id)
+                .then((res) => {
+                    setEmpleoGuardado([...empleoGuardado, res.data])
+                })
         })
-    } */
+    }, []) 
 
-    const funcionGuardarEmpleo = (id) => {
-        const arrLocal = JSON.parse(localStorage.getItem('jobsSave')) || [];
-        const searchId = arrLocal.indexOf(id);
-        
-        if (searchId === -1) {
-            const newArr = [...arrLocal, id];
-            localStorage.setItem('jobsSave',  JSON.stringify(newArr))
-        } else {
-            alert('ya tienes este trabajo guardado')
-        }
-    }
+    /* console.log(arrLocal) */
+    console.log(empleoGuardado)
 
+    /* console.log(empleoGuardado) */
     return (
-        empleos.map(empleo => (
+        empleoGuardado.map(empleo => (
             <Card elevation={24} key={empleo.id} sx={{
                 maxWidth: 345,
                 margin: '5%',
@@ -72,12 +70,9 @@ export default function CardEmpleos({ empleos }) {
                         border: 'solid 2px rgb(0, 105, 192)',
                         margin: '10px',
                         color: 'rgb(0, 105, 192)'
-                    }} onClick={()=>{
-                        funcionGuardarEmpleo(empleo._id);}
-                        } id={styles.botonGuardar} size="small">Guardar</Button>
+                    }} id={styles.botonGuardar} size="small">Guardar</Button>
                 </CardActions>
             </Card>
         ))
-
-    );
+    )
 }
