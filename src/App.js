@@ -47,11 +47,7 @@ export default function App() {
                 <Route exact path="/ingresar" element={<Ingresar />}/>
                 <Route exact path="/perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
-<<<<<<< HEAD
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
-=======
-                <Route exact path="/trabajar/postular" element={<EmpleosPostulantesDetail />}/>
->>>>>>> igna
             </Routes>
         </>
     )
