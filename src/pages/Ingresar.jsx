@@ -63,6 +63,7 @@ export default function Ingresar(props) {
             } else {
                 localStorage.setItem("token",data.token)
                 localStorage.setItem("role",data.user.role)
+                localStorage.setItem("role",data.user)
                 context.setAuth({
                     id:data.user.id,
                     name:data.user.name,
@@ -76,9 +77,12 @@ export default function Ingresar(props) {
     }
 
     return (
-        <div className='login'>
-            <div className='login-color'>
-                <Typography variant="h1" sx={{
+        <div className='division'>
+            <div className='login'>
+                <div className='login-color' />
+            </div>
+            <div className='loginForm'>
+                <Typography variant="h4" sx={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

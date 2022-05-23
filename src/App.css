@@ -4,7 +4,7 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 body {
@@ -28,6 +28,11 @@ body {
   display: flex;
 }
 
+.division{
+  width: 100%;
+  display: flex;
+}
+
 /* MITAD FONDO DE IMG*/
 .home-img{
   width: 50%;
@@ -40,7 +45,7 @@ body {
 }
 
 .login{
-  width: 100%;
+  width: 50%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -51,14 +56,36 @@ body {
   background-position: center;
 }
 
-.login-color {
+.newJob{
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./media/img/nuevoTrabajo.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.loginForm, .newJobForm {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 154, 62);
+}
+
+.login-color , .newJob-color {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 154, 62, 0.3);
+  background-color: rgba(255, 154, 62, 0.1);
 }
 
 /* MITAD LOGO CON BOTONES*/
@@ -118,7 +145,8 @@ rgb(255, 154, 62)
   align-items: center;
   text-align: center;
   padding: 5px 5px;
-  font-weight: 600 !important;
+  font-size: 20px;
+  font-family: 'Macondo';
   text-align: center;
   text-decoration: none;
   outline: none;
@@ -139,12 +167,13 @@ rgb(255, 154, 62)
   align-items: center;
   text-align: center;
   padding: 5px 5px;
-  font-weight: 600 !important;
+  font-size: 20px;
+  font-family: 'Macondo';
   text-align: center;
   text-decoration: none;
   outline: none;
   color: white;
-  background-color: rgba(255, 154, 62, 0.8);
+  background-color: rgba(233, 121, 26, 0.8);
   border: none;
   border-radius: 50px;
   height: 50px;
@@ -152,7 +181,7 @@ rgb(255, 154, 62)
 }
 .myButtonDiv:hover {
   color: white;
-  background-color: rgb(255, 154, 62);
+  background-color: rgb(233, 121, 26);
 }
 
 a {

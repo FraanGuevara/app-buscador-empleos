@@ -49,14 +49,31 @@ export default function NuevoTrabajo(props) {
     }
 
     return (
-        <div className='home position'>
-            <div className='home-img' />
-            <div className='home-ingreso'>
-                <Typography variant="h1" sx={{fontFamily: 'Macondo', padding: '10px', color: 'white'}}>Crea una postulación!</Typography>
+        <div className='division'>
+            <div className='newJob'>
+                <div className='newJob-color' />
+            </div>
+            <div className='newJobForm'>
+                <Typography variant="h4" sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    fontFamily: 'Macondo',
+                    padding: '10px',
+                    margin: '10px',
+                    marginTop: '90px',
+                    color: 'white',
+                    width: '80%',
+                    minWidth: '280px',
+                    backgroundColor: 'rgba(0, 105, 192, 0.8)',
+                    borderRadius: '50px'}}>
+                    Crea una postulación!
+                </Typography>
                 <form onSubmit={handleNewJob} className='w100'>
                     <Box sx={{
                         display: 'flex',
-                        width: '60%',
+                        width: '80%',
                         minWidth: '280px',
                         backgroundColor: 'rgb(0, 105, 192)',
                         border: '5px solid rgb(0, 105, 192)',
@@ -76,7 +93,7 @@ export default function NuevoTrabajo(props) {
                         </label>
                         <input type='text' name='title' id='title' placeholder='título' className='myInput' ref={title} required />
                     </Box>
-                    <Box sx={{display: 'flex', width: '60%', minWidth: '280px'}}>
+                    <Box sx={{display: 'flex', width: '80%', minWidth: '280px'}}>
                         <Box sx={{
                             display: 'flex',
                             width: '50%',
@@ -124,7 +141,7 @@ export default function NuevoTrabajo(props) {
                             <input type='text' name='category' id='category2' placeholder='categoría 2' className='myInput' ref={category2} required />
                         </Box>
                     </Box>
-                    <Box sx={{display: 'flex', width: '60%'}}>
+                    <Box sx={{display: 'flex', width: '80%'}}>
                         <Box sx={{
                             display: 'flex',
                             width: '50%',
@@ -174,7 +191,7 @@ export default function NuevoTrabajo(props) {
                     </Box>
                     <Box sx={{
                         display: 'flex',
-                        width: '60%',
+                        width: '80%',
                         minWidth: '280px',
                         backgroundColor: 'rgb(0, 105, 192)',
                         border: '5px solid rgb(0, 105, 192)',
@@ -197,7 +214,7 @@ export default function NuevoTrabajo(props) {
                     </Box>
                     <Box sx={{
                         display: 'flex',
-                        width: '60%',
+                        width: '80%',
                         minWidth: '280px',
                         backgroundColor: 'rgb(0, 105, 192)',
                         border: '5px solid rgb(0, 105, 192)',
@@ -220,7 +237,7 @@ export default function NuevoTrabajo(props) {
                     </Box>
                     <Box sx={{
                         display: 'flex',
-                        width: '60%',
+                        width: '80%',
                         minWidth: '280px',
                         backgroundColor: 'rgb(0, 105, 192)',
                         border: '5px solid rgb(0, 105, 192)',
@@ -243,7 +260,7 @@ export default function NuevoTrabajo(props) {
                     </Box>
                     <Box sx={{
                         display: 'flex',
-                        width: '60%',
+                        width: '80%',
                         minWidth: '280px',
                         backgroundColor: 'rgb(0, 105, 192)',
                         border: '5px solid rgb(0, 105, 192)',
@@ -268,7 +285,7 @@ export default function NuevoTrabajo(props) {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '60%',
+                        width: '80%',
                         minWidth: '280px',
                         height: '50px',
                         borderRadius: '50px',
