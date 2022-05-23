@@ -9,7 +9,7 @@ import Postulados from "./pages/Postulados"
 import NuevoTrabajo from './pages/NuevoTrabajo'
 import Error from "./pages/Error"
 import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
-import HomePostulantes from "./components/HomePostulantes"
+import Postulaciones from "./components/Postulaciones"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavBar from './components/navBar'
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
@@ -42,7 +42,7 @@ export default function App() {
             <Routes>
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/inicio" element={<Home/>}/>
-                <Route exact path="/postulaciones" element={<HomePostulantes />}/>
+                <Route exact path="/postulaciones" element={<Postulaciones/>}/>
                 <Route exact path="/postulados" element={<Postulados />}/>
                 <Route exact path="/trabajar" element={<EmpleosPostulantes />}/>
                 <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
