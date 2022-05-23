@@ -33,26 +33,6 @@ const getJwt = (web, data)=>{
     }
 }
 
-/* Funcion para aplicar a empleos */
-const putWithToken = async (url,data)=>{
-    const token = localStorage.getItem("token")
-    if(token){
-        return await instance.put(url,data,{
-            headers:{
-                'Authorization':"Bearer "+localStorage.getItem("token")
-            }
-        })
-    }
-
-    return {
-        data:{
-            failed:true,
-            message:"No tienes token"
-        }
-    }
-}
-
-
 /* Funcion para modificar datos a la APIcon JWT */
 const putJwt = async (url,data)=>{
     const token = localStorage.getItem("token")
@@ -75,4 +55,4 @@ const deleteJwt = async (url,data) =>{
 export default instance
 
 
-export {post,postJwt,getJwt,putJwt,deleteJwt, putWithToken}
+export {post,postJwt,getJwt,putJwt,deleteJwt}

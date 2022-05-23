@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './EmpleosPostulantes.module.css'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { Link, useParams } from 'react-router-dom';
-import { getJwt, putWithToken } from '../../api';
+import { getJwt, putJwt } from '../../api';
 
 export default function EmpleosPostulantesDetail() {
 
@@ -28,7 +28,7 @@ export default function EmpleosPostulantesDetail() {
     }, [])
 
     const aplicar = () => {
-        putWithToken(`jobs/apply/` + id)
+        putJwt(`jobs/apply/` + id)
             .then(result => {
                 if(result.data.error === true){
                     alert('Lo siento, ya has aplicado al empleo')
@@ -43,7 +43,7 @@ export default function EmpleosPostulantesDetail() {
     }
 
     const unApply = () => {
-        putWithToken(`jobs/unapply/` + id)
+        putJwt(`jobs/unapply/` + id)
             .then(result => {
                 if(result.data.error === true){
                     alert('Lo siento, no has aplicado a este empleo')
