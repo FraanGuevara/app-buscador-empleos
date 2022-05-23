@@ -1,86 +1,116 @@
 import { Button } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './EmpleosPostulantes.module.css'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import { Link } from 'react-router-dom';
-import CardEmpleos from './CardEmpleos'
+import { Link, useParams } from 'react-router-dom';
+import { getJwt, putWithToken } from '../../api';
 
 export default function EmpleosPostulantesDetail() {
+
+    const [empleo, setEmpleo] = useState({});
+    /* Variables estados */
+    const [empleador, setEmpleador] = useState([]);
+    const [pais, setPais] = useState('');
+    const [provincia, setProvincia] = useState('');
+    const [categorias, setCategorias] = ('')
+    const { id } = useParams();
+    const { title, description, salary } = empleo;
+
+    useEffect(() => {
+        getJwt("jobs/" + id)
+            .then((res) => {
+                setEmpleo((res.data));
+                setEmpleador(res.data.employer)
+                setPais(res.data.location.country);
+                setProvincia(res.data.location.province);
+            })
+            .catch(error => console.log(error));
+    }, [])
+
+    const aplicar = () => {
+        putWithToken(`jobs/apply/` + id)
+            .then(result => {
+                if(result.data.error === true){
+                    alert('Lo siento, ya has aplicado al empleo')
+                }else{
+                    alert('Muchas gracias por aplicar!')
+                }
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    const unApply = () => {
+        putWithToken(`jobs/unapply/` + id)
+            .then(result => {
+                if(result.data.error === true){
+                    alert('Lo siento, no has aplicado a este empleo')
+                }else{
+                    alert('Tu postulacion a sido removida ')
+                }
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
     return (
         <>
             <div className={styles.containterEmpleoDetail}>
                 <Link to='/empleos'>
                     <Button id={styles.botonVolverEmpleoDetail}>  ←  Volver al listado</Button></Link>
-                <div>
-                    <div className={styles.titulosEmpleoDetail}>
-                        <h1>Frontend Junior / Semi senior</h1>
-                        <h3>AZZA Informatica S.A.ㅤ-ㅤ <p style={{ display: 'inline', fontWeight: 'normal' }}>Rosario, Santa fe</p></h3>
+                {/* HEADER */}
+                <div className={styles.containerEmpleo}>
+                    <div className={styles.EmpleoDetalle}>
+                        <div>
+                            <div className={styles.titulosEmpleoDetail}>
+                                <h1 style={{ color: 'rgb(255, 154, 6)' }}>{title}</h1>
+                                <h3 style={{ display: 'inline', fontWeight: 'normal' }}> {`[${pais}, ${provincia}]`}</h3>
+                            </div>
+                            <hr />
+                            {/* MINI NAVBAR */}
+                        </div>
+                        {/* DETALLE EMPLEO */}
+                        <div className={styles.descripcionEmpleoDetail}>
+                            <h3>Descripcion de la oferta</h3>
+                            <p className={styles.descripcionEmpleoDetailParrafo}>{description}</p>
+                            <br />
+                            <h4>Salario</h4>
+                            <p className={styles.descripcionEmpleoDetailParrafo}>{salary}</p>
+                            <hr />
+                        </div>
                     </div>
-                    <div className={styles.navbarEmpleoDetail}>
-                        <div><Button id={styles.navbarEmpleoDetailBoton}>Oferta</Button></div>
-                        <div><Button id={styles.navbarEmpleoDetailBoton}>Empresa</Button></div>
-                        <div><Button id={styles.navbarEmpleoDetailBoton}>Ofertas similares</Button></div>
-                    </div>
-                </div>
-                <div className={styles.descripcionEmpleoDetail}>
-                    <h3>Descripcion de la oferta</h3>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <p className={styles.descripcionEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti iste nihil, commodi consequatur, numquam pariatur, dolores maxime facilis illum rerum totam repellendus ut optio! Praesentium corporis eos at officia saepe.</p>
-                    <hr />
-                </div>
-                <div className={styles.cardEmpleo}>
-                    <div className={styles.cardEmpleoEmpresa}>
-                        <img className={styles.cardEmpleoFoto} src="https://picsum.photos/200" alt="Logo empresa" />
-                        <h4>AZZA Informatica S.A. </h4>
-                        <p style={{ color: 'green', marginBottom: '80px' }}>Empresa verificada ✔️</p>
-                    </div>
-                    <h2>Frontend Junior / Semi senior</h2>
-                    <p style={{ display: 'inline', fontWeight: 'normal' }}>Rosario, Santa fe</p>
-                    <div className={styles.cardEmpleoBotonDiv}>
-                        <Button className={styles.cardEmpleoBoton}> Postularme</Button>
-                        <Button className={styles.cardEmpleoBotonGuardar}> <BookmarkBorderIcon /> </Button>
-
-                    </div>
-                </div>
-                <div className={styles.empresaEmpleoDetail}>
-                    <h3 className={styles.empresaEmpleoDetailParrafo}>Datos de la Empresa</h3>
-                    <h4 className={styles.empresaEmpleoDetailParrafo}>Acerca de AZZA Informatica S.A. </h4>
-                    <p className={styles.empresaEmpleoDetailParrafo}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed excepturi reiciendis eaque animi. Dignissimos aliquid magnam veniam iusto recusandae pariatur quaerat corrupti beatae iure dolorum? Eaque et enim velit quas?</p>
-                    <h4>Beneficios</h4>
-                    <br />
-                    <h4>items sobre beneficions con iconos</h4>
-                    <div className={styles.iconosEmpresa}>
-                        <p>Items</p>
-                        <p>Items</p>
-                        <p>Items</p>
-                        <p>Items</p>
-                        <p>Items</p>
-                        <p>Items</p>
-                    </div>
-                </div>
-                <hr />
-
-                <div>
-                    <h2>OFERTAS SIMILARES</h2>
-                    <div className={styles.ofertasSimilares}>
-                        <CardEmpleos />
-                        <CardEmpleos />
-                        <CardEmpleos />
-                        <CardEmpleos />
+                    {/* CARD EMPLEADOR */}
+                    <div className={styles.cardEmpleo}>
+                        <div className={styles.cardEmpleoEmpresa}>
+                            <img className={styles.cardEmpleoFoto} src="https://picsum.photos/200" alt="Logo empresa" />
+                            <h2>{empleador.name}</h2>
+                            <p style={{ color: 'green', marginBottom: '80px' }}>Empresa verificada ✔️</p>
+                        </div>
+                        {/* DATOS EMPLEADOR */}
+                        <div className={styles.empresaEmpleoDetail}>
+                            <h4 className={styles.empresaEmpleoDetailParrafo}>Datos de la Empresa:</h4>
+                            <h5 className={styles.empresaEmpleoDetailParrafo}>{empleador.name}</h5>
+                            <p className={styles.empresaEmpleoDetailParrafo}>{empleador.email}</p>
+                        </div>
+                        <div className={styles.cardEmpleoBotonDiv}>
+                            <Button className={styles.cardEmpleoBoton} onClick={aplicar}> Postularme</Button>
+                            <Button className={styles.cardEmpleoBoton} onClick={unApply}> Anular Solicitud</Button>
+                            <Button className={styles.cardEmpleoBotonGuardar}> <BookmarkBorderIcon /> </Button>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </>
     )
 }
+
+{/* <div className={styles.navbarEmpleoDetail}>
+<div><Button id={styles.navbarEmpleoDetailBoton}>Oferta</Button></div>
+<div><Button id={styles.navbarEmpleoDetailBoton}>Empresa</Button></div>
+<div><Button id={styles.navbarEmpleoDetailBoton}>Ofertas similares</Button></div>
+</div> */}

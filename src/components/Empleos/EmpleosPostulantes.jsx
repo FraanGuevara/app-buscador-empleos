@@ -16,12 +16,6 @@ export default function EmpleosPostulantes() {
   }, [])
 
 
-
-
-
-
-
-
   return (
 
     <>

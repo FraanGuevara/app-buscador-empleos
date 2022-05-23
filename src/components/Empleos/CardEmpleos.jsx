@@ -10,12 +10,11 @@ import styles from './CardEmpleos.module.css'
 import { Link } from 'react-router-dom';
 
 export default function CardEmpleos({empleos}) {
-
-    console.log(empleos)
+console.log(empleos)
 
     return (
-
         empleos.map(empleo =>(
+            
         <Card elevation={24} key={empleo.id} sx={{ 
             maxWidth: 345,
             margin:'5%',
@@ -41,7 +40,7 @@ export default function CardEmpleos({empleos}) {
                 padding:'15px'
             }}>
                 
-                <Link to='/empleos/empleoDetail'>
+                <Link to={'/empleos/empleoDetail/' + empleo._id}>
                     <Button sx={{
                         backgroundColor:'rgb(255, 154, 6)',
                         border:'solid 2px rgb(255, 154, 6)',
