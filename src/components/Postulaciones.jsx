@@ -3,6 +3,7 @@ import { postJwt } from '../api'
 import CardPostulaciones from './CardPostulaciones';
 import styles from '../components/Empleos/EmpleosPostulantes.module.css';
 import CardEmpleosGuardados from './CardEmpleosGuardados';
+import { Box } from '@mui/material'
 
 export default function Postulaciones() {
 
@@ -16,16 +17,14 @@ export default function Postulaciones() {
     }, [])
 
   return (
-    <>
-    <div className={styles.containerEmpleos}>
+    <Box className={styles.containterEmpleos} sx={{marginTop: '90px'}}>
         <div style={{ width: 'auto' }}></div>
         <div className={styles.containterCardEmpleos} >
         <CardPostulaciones
           postulacion={postulaciones}/>
-          <h3 style={{color:'black'}}>Empleos guardados</h3>
-          <CardEmpleosGuardados/>
+          {/* <h3 style={{color:'black'}}>Empleos guardados</h3> */}
+          {/* <CardEmpleosGuardados/> */}
         </div>
-      </div>
-    </>
+      </Box>
   )
 }

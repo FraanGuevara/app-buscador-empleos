@@ -3,6 +3,7 @@ import CardEmpleos from './CardEmpleos';
 import FiltrosEmpleos from './FiltrosEmpleos';
 import styles from './EmpleosPostulantes.module.css';
 import { getJwt } from '../../api';
+import { Box } from '@mui/material'
 
 
 export default function EmpleosPostulantes() {
@@ -19,17 +20,16 @@ export default function EmpleosPostulantes() {
   return (
 
     <>
-      <div className={styles.containerEmpleos}>
+      <Box className={styles.containterEmpleo} sx={{marginTop: '90px', marginLeft: '300px'}}>
         <div className={styles.containterFiltrosEmpleos}>
           <FiltrosEmpleos />
         </div>
-        <div style={{ width: '300px' }}></div>
         <div className={styles.containterCardEmpleos} >
           <CardEmpleos
           empleos = {empleos}
           />
         </div>
-      </div>
+      </Box>
     </>
   )
 }

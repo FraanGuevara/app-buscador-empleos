@@ -16,8 +16,8 @@ import LogOutNav from './logOutNav'
 
 import '../App.css'
 
-const userPages = ['trabajar','postulaciones','salir']
-const empPages = ['ofrecer','postulados','salir']
+const userPages = ['inicio','trabajar','postulaciones','salir']
+const empPages = ['inicio','ofrecer','postulados','salir']
 let pages = ['inicio']
 
 export default function NavBar(props) {
