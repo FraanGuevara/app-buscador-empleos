@@ -47,12 +47,8 @@ export default function App() {
                 <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
                 <Route exact path="/*" element={<Error/>}/>
-
-{/* <<<<<<< HEAD */}
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
-{/* =======
                 <Route exact path="/trabajar/postular" element={<EmpleosPostulantesDetail />}/>
->>>>>>> igna */}
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>                
 

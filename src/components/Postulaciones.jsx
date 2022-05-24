@@ -3,6 +3,7 @@ import { postJwt } from '../api'
 import CardPostulaciones from './CardPostulaciones';
 import styles from '../components/Empleos/EmpleosPostulantes.module.css';
 import CardEmpleosGuardados from './CardEmpleosGuardados';
+import { Box } from '@mui/material'
 
 export default function Postulaciones() {
 
@@ -16,6 +17,7 @@ export default function Postulaciones() {
   }, [])
 
   return (
+
     <>
       <div style={{ marginTop: '15%' }}>
         <div style={{ border: 'solid 2px #2dc653',margin:'5%', marginTop: '15%', paddingLeft:'2%',paddingRight:'2%', borderRadius:'15px', backgroundColor:'#92e6a7'}}>
@@ -30,8 +32,14 @@ export default function Postulaciones() {
           <div className={styles.containterCardEmpleos} >
             <CardEmpleosGuardados />
           </div>
+    <Box className={styles.containterEmpleos} sx={{marginTop: '90px'}}>
+        <div style={{ width: 'auto' }}></div>
+        <div className={styles.containterCardEmpleos} >
+        <CardPostulaciones
+          postulacion={postulaciones}/>
+          {/* <h3 style={{color:'black'}}>Empleos guardados</h3> */}
+          {/* <CardEmpleosGuardados/> */}
         </div>
-      </div>
-    </>
+      </Box>
   )
 }
