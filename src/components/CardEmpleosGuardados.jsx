@@ -16,50 +16,70 @@ export default function CardEmpleosGuardados() {
 
     useEffect(() => {
         setEmpleoGuardado(JSON.parse(localStorage.getItem('jobsSave')));
-    }, []) 
+    }, [])
     return (
-    <>
-    {empleoGuardado === [] || empleoGuardado === null?
-    <h1 style={{color:'black'}}>No hay empleos guardados</h1>:
-    empleoGuardado.map(empleo => (
-        <Card elevation={24} key={empleo.id} sx={{
-            maxWidth: 345,
-            margin: '5%',
-        }}>
-            <CardHeader
-                title={empleo.title}
-                subheader={empleo.location.province}
-            />
-            <CardMedia
-                component="img"
-                height="200"
-                image="https://picsum.photos/200"
-                alt=""
-            />
-            <CardContent>
-                <Typography variant="body1" color="text.primary">
-                    {empleo.description}
-                </Typography>
-            </CardContent>
-            <CardActions sx={{
-                backgroundColor: '#e5e5e5',
-                padding: '15px'
-            }}>
-
-                <Link to={'/empleos/empleoDetail/' + empleo._id}>
-                    <Button sx={{
-                        backgroundColor: 'rgb(255, 154, 6)',
-                        border: 'solid 2px rgb(255, 154, 6)',
-                        margin: '10px',
+        <>
+            {empleoGuardado === [] || empleoGuardado === null ?
+                <h1 style={{ color: 'black' }}>No hay empleos guardados</h1> :
+                empleoGuardado.map(empleo => (
+                    <Card elevation={24} key={empleo.id} sx={{
+                        maxWidth: 345,
+                        minWidth: 345,
+                        minHeight: 550,
+                        maxHeight: 550,
+                        margin: '5%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
                         color: 'white'
-                    }} id={styles.botonAplicar} size="small">Ver Empleo</Button>
-                </Link>
-            </CardActions>
-        </Card>
-    ))
-    }
-    </>
+                    }}>
+                        <CardHeader sx={{
+                            marginTop: '0px',
+                            minHeight: '115px',
+                            backgroundColor: 'rgb(0, 105, 192);',
+                        }}
 
-        
+                            title={empleo.title}
+                            subheader={empleo.location.province}
+                        />
+                        <CardMedia
+                            component="img"
+                            height="200"
+                            image="https://previews.123rf.com/images/veronawinner/veronawinner1801/veronawinner180100033/93792869-icono-de-lupa-signo-de-búsqueda-de-documentos.jpg"
+                            alt=""
+                        />
+                        <CardContent
+                        sx={{
+                            textAlign: 'center',
+                            minHeight: 150,
+                            maxHeight: 150,
+                            marginBottom: '0px',
+                        }}
+                        >
+                            <Typography variant="body1" color="text.primary">
+                                {empleo.description}
+                            </Typography>
+                        </CardContent>
+                        <CardActions sx={{
+                            backgroundColor: '#e5e5e5',
+                            padding: '15px',
+                            marginTop: '0px'
+                        }}>
+
+                            <Link to={'/empleos/empleoDetail/' + empleo._id}>
+                                <Button sx={{
+                                    backgroundColor: 'rgb(255, 154, 6)',
+                                    border: 'solid 2px rgb(255, 154, 6)',
+                                    margin: '10px',
+                                    color: 'white',
+                                }} id={styles.botonAplicar} size="small">Ver Empleo</Button>
+                            </Link>
+                        </CardActions>
+                    </Card>
+                ))
+            }
+        </>
+
+
     )
 }

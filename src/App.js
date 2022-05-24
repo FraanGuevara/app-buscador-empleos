@@ -1,8 +1,6 @@
 import {useContext,useEffect} from 'react'
 import {Routes,Route,useLocation} from "react-router-dom"
-
 import "./App.css"
-
 import Home from "./pages/Home"
 import Ingresar from "./pages/Ingresar"
 import Postulados from "./pages/Postulados"
@@ -10,7 +8,6 @@ import NuevoTrabajo from './pages/NuevoTrabajo'
 import Error from "./pages/Error"
 import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
 import Postulaciones from "./components/Postulaciones"
-import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavBar from './components/navBar'
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
 import EmpleosPostuladosDetail from "./pages/EmpleosPostulados"
@@ -49,7 +46,6 @@ export default function App() {
                 <Route exact path="/trabajar" element={<EmpleosPostulantes />}/>
                 <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
-                <Route exact path="/perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
 
 {/* <<<<<<< HEAD */}
