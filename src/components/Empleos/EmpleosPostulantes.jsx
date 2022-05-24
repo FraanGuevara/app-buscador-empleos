@@ -8,10 +8,14 @@ import { getJwt } from '../../api';
 export default function EmpleosPostulantes() {
 
   const [empleos, setEmpleos] = useState([])
+  const [datosDinamicos, setDatosDinamicos] = useState([]);
+
 
   useEffect(() => {
     getJwt("jobs")
-      .then(res => setEmpleos(res.data))
+      .then(res =>{ 
+        setEmpleos(res.data)
+        setDatosDinamicos(res.data)})
       .catch(error => console.log(error));
   }, [])
 
@@ -21,12 +25,16 @@ export default function EmpleosPostulantes() {
     <>
       <div className={styles.containerEmpleos}>
         <div className={styles.containterFiltrosEmpleos}>
-          <FiltrosEmpleos />
+          <FiltrosEmpleos 
+          empleos={empleos}
+          datosDinamicos={datosDinamicos}
+          setDatosDinamicos={setDatosDinamicos}/>
         </div>
         <div style={{ width: '300px' }}></div>
         <div className={styles.containterCardEmpleos} >
           <CardEmpleos
           empleos = {empleos}
+          datosDinamicos={datosDinamicos}
           />
         </div>
       </div>

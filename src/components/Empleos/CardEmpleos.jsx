@@ -10,10 +10,10 @@ import styles from './CardEmpleos.module.css'
 import { Link } from 'react-router-dom';
 /* import { getJwt } from '../../api' */
 
-export default function CardEmpleos({ empleos }) {
+export default function CardEmpleos({ empleos, datosDinamicos }) {
 
-    return (
-        empleos.map(empleo => (
+    return (empleos &&
+        datosDinamicos.map(empleo => (
             <Card elevation={24} key={empleo.id} sx={{
                 maxWidth: 345,
                 minHeight: 550,
