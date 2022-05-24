@@ -12,10 +12,7 @@ import { Link } from 'react-router-dom';
 
 export default function CardEmpleos({ empleos }) {
 
-    const [estadoGuardarEmpleo, setEstadoGuardarEmpleo] = useState(false);
-    /* const [inicioEstado, setInicioEstado] = useState(Boolean); */
-
-
+    /* onst [estadoGuardarEmpleo, setEstadoGuardarEmpleo] = useState(false)
 
     const funcionGuardarEmpleo = (empleo) => {
         const arrLocal = JSON.parse(localStorage.getItem('jobsSave')) || [];
@@ -23,19 +20,14 @@ export default function CardEmpleos({ empleos }) {
         
         if (searchEmpleo === undefined) {
             const newArr = [...arrLocal, empleo];
-            localStorage.setItem('jobsSave', JSON.stringify(newArr))
+            localStorage.setItem('jobsSave',  JSON.stringify(newArr))
             setEstadoGuardarEmpleo(true)
         } else {
             alert('Sacado de favoritos')
             setEstadoGuardarEmpleo(false)
         }
     }
-
-    useEffect(() => {
-        
-    }, [])
-    
-
+ */
     return (
         empleos.map(empleo => (
             <Card elevation={24} key={empleo.id} sx={{
@@ -70,8 +62,7 @@ export default function CardEmpleos({ empleos }) {
                             color: 'white'
                         }} id={styles.botonAplicar} size="small">Ver Empleo</Button>
                     </Link>
-
-                    {estadoGuardarEmpleo === false ?
+                    {/* {estadoGuardarEmpleo === false ?
                     <Button sx={{
                         backgroundColor: ' #e5e5e5 ',
                         border: 'solid 2px rgb(0, 105, 192)',
@@ -86,8 +77,8 @@ export default function CardEmpleos({ empleos }) {
                             margin: '10px',
                             color: 'rgb(0, 105, 192)'
                         }} onClick={()=>{
-                            funcionGuardarEmpleo(empleo);}} id={styles.botonGuardar} size="small">No guardar</Button>
-                    }
+                            funcionGuardarEmpleo(empleo);}} id={styles.botonGuardar} size="small">Desguardar</Button>
+                    } */}
                     {/* <Button sx={{
                         backgroundColor: ' #e5e5e5 ',
                         border: 'solid 2px rgb(0, 105, 192)',

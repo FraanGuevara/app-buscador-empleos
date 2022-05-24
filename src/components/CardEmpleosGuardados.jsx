@@ -8,8 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from '../components/Empleos/CardEmpleos.module.css'
 import { Link } from 'react-router-dom';
-import { getJwt } from '../api';
-import { ConstructionOutlined } from '@mui/icons-material';
+
 
 export default function CardEmpleosGuardados() {
 
@@ -54,12 +53,6 @@ export default function CardEmpleosGuardados() {
                             color: 'white'
                         }} id={styles.botonAplicar} size="small">Ver Empleo</Button>
                     </Link>
-                    <Button sx={{
-                        backgroundColor: ' #e5e5e5 ',
-                        border: 'solid 2px rgb(0, 105, 192)',
-                        margin: '10px',
-                        color: 'rgb(0, 105, 192)'
-                    }} id={styles.botonGuardar} size="small">Guardar</Button>
                 </CardActions>
             </Card>
         ))

@@ -9,7 +9,6 @@ export default function Postulaciones() {
   const [postulaciones, setPostulaciones] = useState([]);
 
 
-    /* console.log(postulaciones) */
     useEffect(() => {
       postJwt('jobs/me')
     .then(res => setPostulaciones(res.data))
