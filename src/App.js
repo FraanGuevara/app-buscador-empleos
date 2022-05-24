@@ -13,6 +13,7 @@ import Postulaciones from "./components/Postulaciones"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavBar from './components/navBar'
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
+import EmpleosPostuladosDetail from "./pages/EmpleosPostulados"
 import {authContext} from './context/AuthContext'
 import {postJwt} from './api'
 
@@ -44,6 +45,7 @@ export default function App() {
                 <Route exact path="/inicio" element={<Home/>}/>
                 <Route exact path="/postulaciones" element={<Postulaciones/>}/>
                 <Route exact path="/postulados" element={<Postulados />}/>
+                <Route exact path="/postulados/postulantesDetail/:id" element={<EmpleosPostuladosDetail />}/>
                 <Route exact path="/trabajar" element={<EmpleosPostulantes />}/>
                 <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
@@ -56,6 +58,8 @@ export default function App() {
                 <Route exact path="/trabajar/postular" element={<EmpleosPostulantesDetail />}/>
 >>>>>>> igna */}
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
+                <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>                
+
             </Routes>
         </>
     )

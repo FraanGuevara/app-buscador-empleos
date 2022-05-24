@@ -16,7 +16,7 @@ export default function Home() {
         <div className='home'>
             <div className='home-img' />
             <div className='home-logo'>
-                <Typography variant="h1" sx={{
+                <Typography variant="h2" sx={{
                     display: 'flex',
                     alignItems: 'flex-end',
                     justifyContent: 'center',
@@ -61,6 +61,7 @@ export default function Home() {
                             </Box>
                         </LinkRouter>
                     ) : (
+                        <>
                         <LinkRouter to={'/ofrecer'}>
                             <Box sx={{
                                 display: 'flex',
@@ -86,8 +87,34 @@ export default function Home() {
                                     </Typography> 
                             </Box>
                         </LinkRouter>
+                        <LinkRouter to={'/postulados'}>
+                            <Box sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '40px 20px 0 20px'}}>
+                                    <HomeIcon sx={{
+                                        color:'rgb(0, 105, 192)',
+                                        '&:hover': {color: 'white', bgcolor: 'rgb(255, 154, 62)'},
+                                        backgroundColor: 'white',
+                                        width: '40px',
+                                        height: '40px',
+                                        padding: '5px',
+                                        borderRadius: '30px'}} />
+                                    <Typography variant="h5" className='macondo' sx={{
+                                        color: 'white',
+                                        display:'flex',
+                                        alignItems:'flex-end',
+                                        justifyContent:'center',
+                                        fontFamily: 'Macondo'}}>
+                                        postulados!
+                                    </Typography> 
+                            </Box>
+                        </LinkRouter>
+                    </>
                     )) : (
-                        <LinkRouter to={'/ingresar'}>
+                    <LinkRouter to={'/ingresar'}>
                         <Box sx={{ 
                             display: 'flex',
                             flexDirection: 'column',
