@@ -43,23 +43,20 @@ export default function EmpleosPostulantesDetail() {
                 );
                 setEstadoGuardarEmpleo(()=>{
                     setArrLocal(JSON.parse(localStorage.getItem('jobsSave')) || [])
-                    console.log(arrLocal)
                     if(arrLocal === []){
                         setEstadoGuardarEmpleo(false)
                     }else{ 
                         const searchEmpleo = arrLocal.find(item => item._id === empleo._id);
-                        console.log(searchEmpleo)
                         if(searchEmpleo === undefined || searchEmpleo === []){
                             setEstadoGuardarEmpleo(false)
                         }else{
                             setEstadoGuardarEmpleo(true)
                         }
-                        
                     }
                 })
             })
             .catch(error => console.log(error));
-    }, [])
+    }, [arrLocal])
 
 
     const agregarAFav = ()=>{

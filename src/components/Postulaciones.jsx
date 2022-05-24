@@ -17,6 +17,7 @@ export default function Postulaciones() {
 
   return (
     <>
+    
     <div className={styles.containerEmpleos}>
         <div style={{ width: 'auto' }}></div>
         <div className={styles.containterCardEmpleos} >
