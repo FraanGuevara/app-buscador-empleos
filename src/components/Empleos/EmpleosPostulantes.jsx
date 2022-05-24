@@ -9,10 +9,14 @@ import { Box } from '@mui/material'
 export default function EmpleosPostulantes() {
 
   const [empleos, setEmpleos] = useState([])
+  const [datosDinamicos, setDatosDinamicos] = useState([]);
+
 
   useEffect(() => {
     getJwt("jobs")
-      .then(res => setEmpleos(res.data))
+      .then(res =>{ 
+        setEmpleos(res.data)
+        setDatosDinamicos(res.data)})
       .catch(error => console.log(error));
   }, [])
 
@@ -22,11 +26,15 @@ export default function EmpleosPostulantes() {
     <>
       <Box className={styles.containterEmpleo} sx={{marginTop: '90px', marginLeft: '300px'}}>
         <div className={styles.containterFiltrosEmpleos}>
-          <FiltrosEmpleos />
+          <FiltrosEmpleos 
+          empleos={empleos}
+          datosDinamicos={datosDinamicos}
+          setDatosDinamicos={setDatosDinamicos}/>
         </div>
         <div className={styles.containterCardEmpleos} >
           <CardEmpleos
           empleos = {empleos}
+          datosDinamicos={datosDinamicos}
           />
         </div>
       </Box>
