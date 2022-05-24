@@ -1,31 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import CardEmpleos from '../components/Empleos/CardEmpleos';
-import styles from '../components/Empleos/EmpleosPostulantes.module.css';
-import {postJwt} from '../api';
-
+import React, { useState, useEffect } from 'react'
+import CardEmpleosOfrecidos from '../components/Empleos/CardEmpleosOfrecidos'
+import {postJwt} from '../api'
+import { Box } from '@mui/material'
 
 export default function Postulados() {
 
-  const [empleos, setEmpleos] = useState([])
+    const [empleos, setEmpleos] = useState([])
 
-  useEffect(() => {
-    postJwt("jobs/employer")
-      .then(res => setEmpleos(res.data))
-      .catch(error => console.log(error));
-  }, [])
+    useEffect(() => {
+        postJwt("jobs/employer")
+          .then(res => setEmpleos(res.data))
+          .catch(error => console.log(error));
+    }, [])
 
-
-  return (
-
-    <>
-        <div className={styles.containerEmpleos}>
-            <div className={styles.containterFiltrosEmpleos}>
-            </div>
-            <div style={{ width: '300px' }}></div>
-            <div className={styles.containterCardEmpleos} >
-                <CardEmpleos empleos = {empleos} />
-            </div>
-        </div>
-    </>
-  )
+    return (
+      <Box sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-evenly',
+          marginTop: '90px'}}>
+          <CardEmpleosOfrecidos empleos={empleos} />
+      </Box>
+    )
 }

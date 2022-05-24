@@ -9,10 +9,10 @@ import Postulados from "./pages/Postulados"
 import NuevoTrabajo from './pages/NuevoTrabajo'
 import Error from "./pages/Error"
 import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
-import HomePostulantes from "./components/HomePostulantes"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavBar from './components/navBar'
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
+import EmpleosPostuladosDetail from "./pages/EmpleosPostulados"
 import {authContext} from './context/AuthContext'
 import {postJwt} from './api'
 
@@ -42,14 +42,14 @@ export default function App() {
             <Routes>
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/inicio" element={<Home/>}/>
-                <Route exact path="/postulaciones" element={<HomePostulantes />}/>
                 <Route exact path="/postulados" element={<Postulados />}/>
+                <Route exact path="/postulados/postulantesDetail/:id" element={<EmpleosPostuladosDetail />}/>
                 <Route exact path="/trabajar" element={<EmpleosPostulantes />}/>
                 <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
                 <Route exact path="/perfil" element={<MiPerfilPostulantes />}/>
                 <Route exact path="/*" element={<Error/>}/>
-                <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
+                <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>                
             </Routes>
         </>
     )
