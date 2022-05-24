@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import PersonIcon from '@mui/icons-material/Person'
 import HomeIcon from '@mui/icons-material/Home'
+import MyLogOutIcon from '../components/logOutIcon'
 
 import '../App.css'
 
@@ -112,6 +113,7 @@ export default function Home() {
                                     </Typography> 
                             </Box>
                         </LinkRouter>
+                        <MyLogOutIcon />
                     </>
                     )) : (
                     <LinkRouter to={'/ingresar'}>

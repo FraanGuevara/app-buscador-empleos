@@ -5,7 +5,6 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { Link, useParams } from 'react-router-dom';
 import { getJwt, putJwt } from '../../api';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
-import { Box } from '@mui/material'
 
 export default function EmpleosPostulantesDetail() {
 
@@ -19,7 +18,7 @@ export default function EmpleosPostulantesDetail() {
     const { title, description, salary } = empleo;
 
     const [estadoGuardarEmpleo, setEstadoGuardarEmpleo] = useState(false)
-
+    const [arrLocal, setArrLocal] = useState([])
 
 
     useEffect(() => {
@@ -42,23 +41,22 @@ export default function EmpleosPostulantesDetail() {
                     }
                 }
                 );
-/*                 setEstadoGuardarEmpleo(()=>{
-                    const arrLocal = [JSON.parse(localStorage.getItem('jobsSave'))] || [];
-                    console.log(arrLocal)
-                    if(arrLocal.length >= 1){
-                        const searchEmpleo = arrLocal.find(item => item.id === empleo._id);
-                        console.log(searchEmpleo)
+                setEstadoGuardarEmpleo(()=>{
+                    setArrLocal(JSON.parse(localStorage.getItem('jobsSave')) || [])
+                    if(arrLocal === []){
+                        setEstadoGuardarEmpleo(false)
+                    }else{ 
+                        const searchEmpleo = arrLocal.find(item => item._id === empleo._id);
                         if(searchEmpleo === undefined || searchEmpleo === []){
                             setEstadoGuardarEmpleo(false)
                         }else{
                             setEstadoGuardarEmpleo(true)
                         }
-                    }else{
-                        setEstadoGuardarEmpleo(false)}
-                }) */
+                    }
+                })
             })
             .catch(error => console.log(error));
-    }, [])
+    }, [arrLocal])
 
 
     const agregarAFav = ()=>{
@@ -115,8 +113,8 @@ export default function EmpleosPostulantesDetail() {
 
     return (
         <>
-            <Box className={styles.containterEmpleoDetail} sx={{marginTop: '90px'}}>
-                <Link to='/trabajar'>
+            <div className={styles.containterEmpleoDetail}>
+                <Link to='/empleos'>
                     <Button id={styles.botonVolverEmpleoDetail}>  ←  Volver al listado</Button></Link>
                 {/* HEADER */}
                 <div className={styles.containerEmpleo}>
@@ -164,8 +162,7 @@ export default function EmpleosPostulantesDetail() {
                         </div>
                     </div>
                 </div>
-            </Box>
+            </div>
         </>
     )
 }
-

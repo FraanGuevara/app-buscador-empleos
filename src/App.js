@@ -8,12 +8,12 @@ import Ingresar from "./pages/Ingresar"
 import Postulados from "./pages/Postulados"
 import NuevoTrabajo from './pages/NuevoTrabajo'
 import Error from "./pages/Error"
-import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
+import EmpleosPostulantes from "./pages/EmpleosPostulantes"
+import EmpleosPostuladosDetail from "./pages/EmpleosPostulados"
 import Postulaciones from "./components/Postulaciones"
 import MiPerfilPostulantes from "./components/MiPerfil/MiPerfilPostulantes"
 import NavBar from './components/navBar'
 import EmpleosPostulantesDetail from "./components/Empleos/EmpleosPostulantesDetail"
-import EmpleosPostuladosDetail from "./pages/EmpleosPostulados"
 import {authContext} from './context/AuthContext'
 import {postJwt} from './api'
 

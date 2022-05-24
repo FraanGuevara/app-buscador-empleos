@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import CardEmpleos from './CardEmpleos';
-import FiltrosEmpleos from './FiltrosEmpleos';
-import styles from './EmpleosPostulantes.module.css';
-import { getJwt } from '../../api';
+import CardEmpleos from '../components/Empleos/CardEmpleos';
+import FiltrosEmpleos from '../components/Empleos/FiltrosEmpleos';
+import styles from '../components/Empleos/EmpleosPostulantes.module.css';
+import { getJwt } from '../api';
 import { Box } from '@mui/material'
 
 
