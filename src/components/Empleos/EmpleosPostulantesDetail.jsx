@@ -42,34 +42,19 @@ export default function EmpleosPostulantesDetail() {
                     }
                 }
                 );
-<<<<<<< HEAD
-/*                 setEstadoGuardarEmpleo(()=>{
-                    const arrLocal = [JSON.parse(localStorage.getItem('jobsSave'))] || [];
-                    console.log(arrLocal)
-                    if(arrLocal.length >= 1){
-                        const searchEmpleo = arrLocal.find(item => item.id === empleo._id);
-                        console.log(searchEmpleo)
-=======
                 setEstadoGuardarEmpleo(()=>{
                     setArrLocal(JSON.parse(localStorage.getItem('jobsSave')) || [])
                     if(arrLocal === []){
                         setEstadoGuardarEmpleo(false)
                     }else{ 
                         const searchEmpleo = arrLocal.find(item => item._id === empleo._id);
->>>>>>> 5682c80
                         if(searchEmpleo === undefined || searchEmpleo === []){
                             setEstadoGuardarEmpleo(false)
                         }else{
                             setEstadoGuardarEmpleo(true)
                         }
-<<<<<<< HEAD
-                    }else{
-                        setEstadoGuardarEmpleo(false)}
-                }) */
-=======
                     }
                 })
->>>>>>> 5682c80
             })
             .catch(error => console.log(error));
     }, [arrLocal])
