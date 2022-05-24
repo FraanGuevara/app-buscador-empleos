@@ -4,6 +4,8 @@ import styles from './EmpleosPostulantes.module.css'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { Link, useParams } from 'react-router-dom';
 import { getJwt, putJwt } from '../../api';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
+import { Box } from '@mui/material'
 
 export default function EmpleosPostulantesDetail() {
 
@@ -12,9 +14,13 @@ export default function EmpleosPostulantesDetail() {
     const [empleador, setEmpleador] = useState([]);
     const [pais, setPais] = useState('');
     const [provincia, setProvincia] = useState('');
-    const [categorias, setCategorias] = ('')
+    const [estadoPostulacion, setEstadoPostulacion] = useState(false)
     const { id } = useParams();
     const { title, description, salary } = empleo;
+
+    const [estadoGuardarEmpleo, setEstadoGuardarEmpleo] = useState(false)
+
+
 
     useEffect(() => {
         getJwt("jobs/" + id)
@@ -23,24 +29,74 @@ export default function EmpleosPostulantesDetail() {
                 setEmpleador(res.data.employer)
                 setPais(res.data.location.country);
                 setProvincia(res.data.location.province);
+                setEstadoPostulacion(()=>{
+                    const searchId = res.data.applicants;
+                    const idPostulante = localStorage.getItem('id');
+                    const resultadoSearch = searchId.find(elemento =>{
+                        return elemento.id === idPostulante
+                    })
+                    if(resultadoSearch === undefined){
+                        setEstadoPostulacion(false)
+                    }else{
+                        setEstadoPostulacion(true)
+                    }
+                }
+                );
+/*                 setEstadoGuardarEmpleo(()=>{
+                    const arrLocal = [JSON.parse(localStorage.getItem('jobsSave'))] || [];
+                    console.log(arrLocal)
+                    if(arrLocal.length >= 1){
+                        const searchEmpleo = arrLocal.find(item => item.id === empleo._id);
+                        console.log(searchEmpleo)
+                        if(searchEmpleo === undefined || searchEmpleo === []){
+                            setEstadoGuardarEmpleo(false)
+                        }else{
+                            setEstadoGuardarEmpleo(true)
+                        }
+                    }else{
+                        setEstadoGuardarEmpleo(false)}
+                }) */
             })
             .catch(error => console.log(error));
     }, [])
 
-    const aplicar = () => {
+
+    const agregarAFav = ()=>{
+        const arrLocal = JSON.parse(localStorage.getItem('jobsSave')) || [];
+        const newArr = [...arrLocal, empleo];
+        localStorage.setItem('jobsSave', JSON.stringify(newArr))
+        setEstadoGuardarEmpleo(true)
+        alert("Agregado a favoritos")
+    }
+
+    const eliminarDeFavoritos = ()=>{
+        const arrLocal = JSON.parse(localStorage.getItem('jobsSave')) || [];
+        const newArr = arrLocal.filter(elemento => elemento._id !== empleo._id);
+        console.log(newArr)
+        localStorage.setItem('jobsSave', JSON.stringify(newArr))
+        setEstadoGuardarEmpleo(false)
+        alert("Eliminado de favoritos")
+    }
+
+
+    const apply = () => {
         putJwt(`jobs/apply/` + id)
             .then(result => {
                 if(result.data.error === true){
                     alert('Lo siento, ya has aplicado al empleo')
+                    
                 }else{
                     alert('Muchas gracias por aplicar!')
+                    setEstadoPostulacion(true)
                 }
-                console.log(result)
             })
             .catch(error => {
                 console.log(error)
             })
     }
+
+
+
 
     const unApply = () => {
         putJwt(`jobs/unapply/` + id)
@@ -49,19 +105,18 @@ export default function EmpleosPostulantesDetail() {
                     alert('Lo siento, no has aplicado a este empleo')
                 }else{
                     alert('Tu postulacion a sido removida ')
+                    setEstadoPostulacion(false)
                 }
-                console.log(result)
             })
             .catch(error => {
                 console.log(error)
             })
     }
 
-
     return (
         <>
-            <div className={styles.containterEmpleoDetail}>
-                <Link to='/empleos'>
+            <Box className={styles.containterEmpleoDetail} sx={{marginTop: '90px'}}>
+                <Link to='/trabajar'>
                     <Button id={styles.botonVolverEmpleoDetail}>  ←  Volver al listado</Button></Link>
                 {/* HEADER */}
                 <div className={styles.containerEmpleo}>
@@ -98,19 +153,19 @@ export default function EmpleosPostulantesDetail() {
                             <p className={styles.empresaEmpleoDetailParrafo}>{empleador.email}</p>
                         </div>
                         <div className={styles.cardEmpleoBotonDiv}>
-                            <Button className={styles.cardEmpleoBoton} onClick={aplicar}> Postularme</Button>
-                            <Button className={styles.cardEmpleoBoton} onClick={unApply}> Anular Solicitud</Button>
-                            <Button className={styles.cardEmpleoBotonGuardar}> <BookmarkBorderIcon /> </Button>
+                            {estadoPostulacion === false ? 
+                            <Button className={styles.cardEmpleoBoton} onClick={apply}> Postularme</Button> :
+                            <Button className={styles.cardEmpleoBoton} onClick={unApply}> Anular Solicitud</Button>}
+                            {estadoGuardarEmpleo === false ?
+                            <Button className={styles.cardEmpleoBotonGuardar} onClick={agregarAFav} > <BookmarkBorderIcon /> </Button> :
+                            <Button className={styles.cardEmpleoBotonGuardar} onClick={eliminarDeFavoritos} > <BookmarkAddedIcon /> </Button>
+                            }
+                            
                         </div>
                     </div>
                 </div>
-            </div>
+            </Box>
         </>
     )
 }
 
-{/* <div className={styles.navbarEmpleoDetail}>
-<div><Button id={styles.navbarEmpleoDetailBoton}>Oferta</Button></div>
-<div><Button id={styles.navbarEmpleoDetailBoton}>Empresa</Button></div>
-<div><Button id={styles.navbarEmpleoDetailBoton}>Ofertas similares</Button></div>
-</div> */}
