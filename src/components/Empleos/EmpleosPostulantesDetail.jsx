@@ -18,7 +18,7 @@ export default function EmpleosPostulantesDetail() {
     const { title, description, salary } = empleo;
 
     const [estadoGuardarEmpleo, setEstadoGuardarEmpleo] = useState(false)
-
+    const [arrLocal, setArrLocal] = useState([])
 
 
     useEffect(() => {
@@ -42,9 +42,11 @@ export default function EmpleosPostulantesDetail() {
                 }
                 );
                 setEstadoGuardarEmpleo(()=>{
-                    const arrLocal = [JSON.parse(localStorage.getItem('jobsSave'))] || [];
+                    setArrLocal(JSON.parse(localStorage.getItem('jobsSave')) || [])
                     console.log(arrLocal)
-                    if(arrLocal.length >= 1){
+                    if(arrLocal === []){
+                        setEstadoGuardarEmpleo(false)
+                    }else{ 
                         const searchEmpleo = arrLocal.find(item => item._id === empleo._id);
                         console.log(searchEmpleo)
                         if(searchEmpleo === undefined || searchEmpleo === []){
@@ -52,8 +54,8 @@ export default function EmpleosPostulantesDetail() {
                         }else{
                             setEstadoGuardarEmpleo(true)
                         }
-                    }else{
-                        setEstadoGuardarEmpleo(false)}
+                        
+                    }
                 })
             })
             .catch(error => console.log(error));
