@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import Ingresar from "./pages/Ingresar"
 import Postulados from "./pages/Postulados"
 import NuevoTrabajo from './pages/NuevoTrabajo'
+import JobCreated from "./pages/JobCreated"
 import Error from "./pages/Error"
 import EmpleosPostulantes from "./components/Empleos/EmpleosPostulantes"
 import Postulaciones from "./components/Postulaciones"
@@ -46,11 +47,12 @@ export default function App() {
                 <Route exact path="/trabajar" element={<EmpleosPostulantes />}/>
                 <Route exact path="/ofrecer" element={<NuevoTrabajo />}/>
                 <Route exact path="/ingresar" element={<Ingresar />}/>
-                <Route exact path="/*" element={<Error/>}/>
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
                 <Route exact path="/trabajar/postular" element={<EmpleosPostulantesDetail />}/>
                 <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>
-                <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>                
+                <Route exact path="/empleos/empleoDetail/:id" element={<EmpleosPostulantesDetail />}/>  
+                <Route exact path="/jobCreated" element={<JobCreated />}/>
+                <Route exact path="/*" element={<Error/>}/>              
             </Routes>
         </>
     )

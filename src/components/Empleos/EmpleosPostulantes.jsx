@@ -24,19 +24,21 @@ export default function EmpleosPostulantes() {
   return (
 
     <>
-      <Box className={styles.containterEmpleo} sx={{marginTop: '90px', marginLeft: '300px'}}>
-        <div className={styles.containterFiltrosEmpleos}>
-          <FiltrosEmpleos 
-          empleos={empleos}
-          datosDinamicos={datosDinamicos}
-          setDatosDinamicos={setDatosDinamicos}/>
-        </div>
-        <div className={styles.containterCardEmpleos} >
+      <Box className={styles.containterEmpleo} sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '100px'}}>
+        <Box sx={{
+          padding: '10px',
+          margin: '10px',
+          border: 'solid 2px rgb(255, 154, 6)',
+          width:'30%',
+          minWidth: '320px'}}>
+          <FiltrosEmpleos empleos={empleos} datosDinamicos={datosDinamicos} setDatosDinamicos={setDatosDinamicos} />
+        </Box>
+        <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly'}}>
           <CardEmpleos
           empleos = {empleos}
           datosDinamicos={datosDinamicos}
           />
-        </div>
+        </Box>
       </Box>
     </>
   )

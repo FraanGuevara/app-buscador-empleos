@@ -6,6 +6,7 @@ import PersonIcon from '@mui/icons-material/Person'
 import HomeIcon from '@mui/icons-material/Home'
 
 import '../App.css'
+import MyLogOutIcon from "../components/logOutIcon"
 
 export default function Home() {
 
@@ -35,6 +36,7 @@ export default function Home() {
                     alignItems:'start',
                     justifyContent: 'center'}}>
                     {token? (role==="applicant"? (
+                        <>
                         <LinkRouter to={'/trabajar'}>
                             <Box sx={{
                                 display: 'flex',
@@ -60,6 +62,33 @@ export default function Home() {
                                     </Typography> 
                             </Box>
                         </LinkRouter>
+                        <LinkRouter to={'/postulaciones'}>
+                            <Box sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '40px 20px 0 20px'}}>
+                                    <PersonIcon sx={{
+                                        color:'rgb(0, 105, 192)',
+                                        '&:hover': {color: 'white', bgcolor: 'rgb(255, 154, 62)'},
+                                        backgroundColor: 'white',
+                                        width: '40px',
+                                        height: '40px',
+                                        padding: '5px',
+                                        borderRadius: '30px'}} />
+                                    <Typography variant="h5" className='macondo' sx={{
+                                        color: 'white',
+                                        display:'flex',
+                                        alignItems:'flex-end',
+                                        justifyContent:'center',
+                                        fontFamily: 'Macondo'}}>
+                                        postulados!
+                                    </Typography> 
+                            </Box>
+                        </LinkRouter>
+                        <MyLogOutIcon />
+                    </>
                     ) : (
                         <>
                         <LinkRouter to={'/ofrecer'}>
@@ -94,7 +123,7 @@ export default function Home() {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 padding: '40px 20px 0 20px'}}>
-                                    <HomeIcon sx={{
+                                    <PersonIcon sx={{
                                         color:'rgb(0, 105, 192)',
                                         '&:hover': {color: 'white', bgcolor: 'rgb(255, 154, 62)'},
                                         backgroundColor: 'white',
@@ -112,6 +141,7 @@ export default function Home() {
                                     </Typography> 
                             </Box>
                         </LinkRouter>
+                        <MyLogOutIcon />
                     </>
                     )) : (
                     <LinkRouter to={'/ingresar'}>
