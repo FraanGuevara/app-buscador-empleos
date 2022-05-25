@@ -1,4 +1,4 @@
-# Rosario Jobs <img width="20px" src='./public/busqueda-de-trabajo.png'> | [Ignacion Borraz ](https://github.com/ignacioborraz)- [Franco Guevara](https://github.com/FraanGuevara)
+# Rosario Jobs <img width="20px" src='./public/busqueda-de-trabajo.png'> | [Ignacio Borraz ](https://github.com/ignacioborraz)- [Franco Guevara](https://github.com/FraanGuevara)
 
 
 ## --Pagina de busqueda de trabajo para el bootcamp de React js de Tzuzul code -- 
