@@ -14,7 +14,7 @@ export default function CardPostulaciones({ postulacion }) {
     return (
         <>
             {postulacion.error === true ?
-                <h1 style={{ backgroundColor: 'red', height: '500px', marginTop: '200px' }}>No hay postulaciones</h1>
+                <h1 style={{ color:'black' }}>No hay postulaciones</h1>
                 :
                 postulacion.map(postulacion => (
 
