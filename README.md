@@ -3,7 +3,7 @@
 
 ## --Pagina de busqueda de trabajo para el bootcamp de React js de Tzuzul code -- 
 
-### 🔍 [Pagina](https://fraanguevara.github.io/app-buscador-empleos/)
+### 🔍 [Pagina](https://fraanguevara.github.io/inicio)
 
 ### 📚 [Repositorio](https://github.com/FraanGuevara/app-buscador-empleos)
 <br>
