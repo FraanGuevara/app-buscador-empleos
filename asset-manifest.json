@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/app-buscador-empleos/static/css/main.2609a417.css",
+    "main.js": "/app-buscador-empleos/static/js/main.977fdc94.js",
+    "static/media/pexels-fauxels-3183165.jpg": "/app-buscador-empleos/static/media/pexels-fauxels-3183165.cedc642a3446b45dd050.jpg",
+    "static/media/oficina-informatica-desenred-las-palmas-3.jpeg": "/app-buscador-empleos/static/media/oficina-informatica-desenred-las-palmas-3.1dae3c739f0738fb604c.jpeg",
+    "static/media/nuevoTrabajo.jpg": "/app-buscador-empleos/static/media/nuevoTrabajo.de239db0c2084b0f38a1.jpg",
+    "index.html": "/app-buscador-empleos/index.html",
+    "main.2609a417.css.map": "/app-buscador-empleos/static/css/main.2609a417.css.map",
+    "main.977fdc94.js.map": "/app-buscador-empleos/static/js/main.977fdc94.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2609a417.css",
+    "static/js/main.977fdc94.js"
+  ]
+}
